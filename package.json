@@ -1,0 +1,41 @@
+{
+  "name": "example-webdev-stack",
+  "description": "A example webdev project with GraphQL",
+  "version": "1.0.0",
+  "author": "nazna <naoya3e@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "dev": "lerna run dev",
+    "start": "lerna run start",
+    "build": "lerna run build",
+    "lint": "lerna run lint"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.1.2",
+    "husky": "^4.2.5",
+    "lerna": "^3.22.1"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nazna/example-webdev-stack"
+  },
+  "bugs": {
+    "url": "https://github.com/nazna/example-webdev-stack/issues"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "npm run lint"
+    }
+  }
+}
