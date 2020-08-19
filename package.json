@@ -9,6 +9,7 @@
     "dev": "lerna run dev",
     "start": "lerna run start",
     "build": "lerna run build",
+    "test": "lerna run test",
     "lint": "lerna run lint"
   },
   "devDependencies": {

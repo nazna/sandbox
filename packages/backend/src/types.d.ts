@@ -1,4 +1,4 @@
 declare type Book = {
-  bookId: string;
-  title: string;
-};
+  bookId: string
+  title: string
+}

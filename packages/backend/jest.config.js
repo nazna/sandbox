@@ -1,9 +1,9 @@
 module.exports = {
-  moduleFileExtensions: ["ts", "js", "json"],
-  rootDir: "src",
-  testEnvironment: "node",
-  testRegex: ".test.ts$",
+  moduleFileExtensions: ['ts', 'js', 'json'],
+  rootDir: 'src',
+  testEnvironment: 'node',
+  testRegex: '.test.ts$',
   transform: {
-    "^.+\\.(ts|js)$": "ts-jest",
+    '^.+\\.(ts|js)$': 'ts-jest',
   },
-};
+}

@@ -1,9 +1,9 @@
-import express, { Response } from "express";
+import express, { Response } from 'express'
 
-const router = express.Router();
+const router = express.Router()
 
-router.get("/", (_, res: Response<Book[]>) => {
-  res.json([{} as Book]);
-});
+router.get('/', (_, res: Response<Book[]>) => {
+  res.json([{} as Book])
+})
 
-export default router;
+export default router
