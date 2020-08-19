@@ -13,5 +13,6 @@
     "version": "v1",
     "limit": 4,
     "total": 10
-  }
+  },
+  "seed": "example-webdev-stack"
 }
