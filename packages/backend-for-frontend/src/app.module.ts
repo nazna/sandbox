@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
-import configuration from './config'
 import DepthLimit from 'graphql-depth-limit'
 import { BooksModule } from './books/books.module'
 import { BooksService } from './books/books.service'
+import configuration from './config'
 
 @Module({
   imports: [
