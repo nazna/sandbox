@@ -4,6 +4,7 @@
 
 ## Todos
 
+- [ ] Add book image e.g. https://source.unsplash.com/collection/1199299/100x100
 - [ ] Local Lighthouse CI
 - [ ] Visual Regression Test
 
