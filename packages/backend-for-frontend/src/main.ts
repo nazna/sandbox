@@ -8,8 +8,8 @@ async function bootstrap() {
 
   const config = app.get(ConfigService)
 
-  const host = config.get('backend.host')
-  const port = config.get('backend.port')
+  const host = config.get('backend-for-frontend.host')
+  const port = config.get('backend-for-frontend.port')
 
   await app.listen(port, () => {
     Logger.log(`Server is running on http://${host}:${port}/graphql`)

@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "dev": "lerna run dev",
-    "start": "lerna run start",
+    "dev": "lerna run --parallel dev",
+    "start": "lerna run --parallel start",
     "build": "lerna run build",
     "test": "lerna run test",
     "lint": "lerna run lint"
