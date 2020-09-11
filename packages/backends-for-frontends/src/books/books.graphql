@@ -1,0 +1,31 @@
+type Query {
+  books(limit: Int = 4, offset: Int!, orderBy: BookOrder = { filed: BOOK_ID, direction: ASC }): BookConnection
+  book(bookId: String!): Book
+}
+
+type BookConnection {
+  total: Int
+  nodes: [Book!]
+}
+
+type Book {
+  bookId: String
+  title: String
+  publishedAt: String
+}
+
+input BookOrder {
+  field: BookOrderField
+  direction: OrderDirection
+}
+
+enum BookOrderField {
+  BOOK_ID
+  TITLE
+  PUBLISHED_AT
+}
+
+enum OrderDirection {
+  ASC
+  DESC
+}

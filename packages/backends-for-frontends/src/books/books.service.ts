@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { RESTDataSource } from 'apollo-datasource-rest'
 import DataLoader from 'dataloader'
-import { Book } from '../graphql.schema'
+import { Book, BookOrder } from '../graphql.schema'
 
 @Injectable()
 export class BooksService extends RESTDataSource {
@@ -21,9 +21,19 @@ export class BooksService extends RESTDataSource {
     return await this.dataloader.load(bookId)
   }
 
-  public async findAll(): Promise<Book[]> {
-    Logger.log(`BooksService.findAll()`)
-    return await this.get('/books')
+  public async findAll(limit: number, offset: number, _orderBy: BookOrder): Promise<Book[]> {
+    const orderBy = JSON.stringify(_orderBy)
+    Logger.log(`BooksService.findAll() limit:${limit} offset:${offset} orderBy:${orderBy}`)
+    return await this.get('/books', {
+      limit,
+      offset,
+      orderBy,
+    })
+  }
+
+  public async findById(bookId: string): Promise<Book> {
+    Logger.log(`BooksService.findById(${bookId})`)
+    return await this.get(`/books/${bookId}`)
   }
 
   public async findByIds(bookIds: readonly string[]): Promise<Book[]> {
