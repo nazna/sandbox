@@ -11,5 +11,6 @@
     "**/dist": true,
     "**/node_modules": true,
     "**/*.code-search": true
-  }
+  },
+  "typescript.preferences.importModuleSpecifier": "relative"
 }
