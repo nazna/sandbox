@@ -10,8 +10,6 @@
   "backend": {
     "host": "localhost",
     "port": 5000,
-    "version": "v1",
-    "limit": 4,
-    "total": 10
+    "version": "v1"
   }
 }
