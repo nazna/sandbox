@@ -9,19 +9,19 @@
 
 ## APIs
 
-- [/v1/books](http://localhost:5000/v1/books)
+- [[GET] /v1/books](http://localhost:5000/v1/books)
   - Return books `Book[]`
   - `limit` and `offset` query is available
     - The default value for `limit` is 10
     - The default value for `offset` is 0
-- [/v1/books/:bookId](http://localhost:5000/v1/books/1)
+- [[GET] /v1/books/:bookId](http://localhost:5000/v1/books/1)
   - Return a book `Book`
-- [/v1/authors](http://localhost:5000/v1/authors)
+- [[GET] /v1/authors](http://localhost:5000/v1/authors)
   - Return authors `Author[]`
   - `limit` and `offset` query is available
     - The default value for `limit` is 10
     - The default value for `offset` is 0
-- [/v1/authors/:authorId](http://localhost:5000/v1/authors/1)
+- [[GET] /v1/authors/:authorId](http://localhost:5000/v1/authors/1)
   - Return a author `Author`
 
 ## Models
