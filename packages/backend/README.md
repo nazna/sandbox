@@ -6,6 +6,7 @@
 
 - [ ] `/v1/books` と `/v1/authors` の Response を `total` を含む `Books` に変更する
 - [ ] 更新系 API を実装する (POST and PUT)
+- [ ] [Winston](https://github.com/winstonjs/winston) などの Logger を導入する
 
 ## APIs
 
