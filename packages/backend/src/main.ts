@@ -4,6 +4,7 @@ import express, { Express } from 'express'
 import helmet from 'helmet'
 import lowdb from 'lowdb'
 import FileSync from 'lowdb/adapters/FileSync'
+import authors from './authors'
 import books from './books'
 
 const adapter = new FileSync('src/db.json')
@@ -17,5 +18,6 @@ app.use(helmet())
 app.use(compression())
 
 app.use(`/${version}/books`, books)
+app.use(`/${version}/authors`, authors)
 
 export default app
