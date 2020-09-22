@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql'
 import DepthLimit from 'graphql-depth-limit'
 import { BooksModule } from './books/books.module'
-import { BooksService } from './books/books.service'
+import { AuthorsModule } from './authors/authors.module'
 import configuration from './config'
 
 @Module({
@@ -12,22 +12,14 @@ import configuration from './config'
       isGlobal: true,
       load: [configuration],
     }),
-    GraphQLModule.forRootAsync({
-      imports: [BooksModule],
-      inject: [BooksService],
-      useFactory: async (booksService: BooksService) => ({
-        debug: true,
-        playground: true,
-        mocks: true,
-        mockEntireSchema: false,
-        typePaths: ['./**/*.graphql'],
-        validationRules: [DepthLimit(3)],
-        dataSources: () => ({
-          booksService,
-        }),
-      }),
+    GraphQLModule.forRoot({
+      debug: true,
+      playground: true,
+      typePaths: ['./**/*.graphql'],
+      validationRules: [DepthLimit(2)],
     }),
     BooksModule,
+    AuthorsModule,
   ],
 })
 export class AppModule {}
