@@ -13,6 +13,7 @@
     "outDir": "./dist",
     "removeComments": true,
     "strict": true,
+    "strictPropertyInitialization": false,
     "target": "ESNext"
   }
 }
