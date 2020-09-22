@@ -10,3 +10,4 @@
 - [ ] class-validator を使った Validation を導入する (`@UsePipes(new ValidationPipe({ transform: true }))`)
 - [ ] 取得したアイテムの長さが `limit` と正しいか単体テストする
 - [ ] `Query.books` と `Query.authors` で Connection 型スキーマを作成し `total` と `nodes: [Book!]!` を返す
+- [ ] [GraphQL Inspector Action](https://graphql-inspector.com/docs/products/action)を導入する
