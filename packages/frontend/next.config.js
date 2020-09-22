@@ -3,4 +3,4 @@ module.exports = {
   poweredByHeader: false,
   reactStrictMode: true,
   trailingSlash: true,
-};
+}
