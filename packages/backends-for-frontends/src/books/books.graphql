@@ -1,22 +1,19 @@
 type Query {
-  books(limit: Int = 4, offset: Int!, orderBy: BookOrder = { filed: BOOK_ID, direction: ASC }): BookConnection
-  book(bookId: String!): Book
-}
-
-type BookConnection {
-  total: Int
-  nodes: [Book!]
+  books(limit: Int = 4, offset: Int = 0, orderBy: BookOrder = { field: BOOK_ID, direction: ASC }): [Book!]!
+  book(bookId: ID!): Book!
 }
 
 type Book {
-  bookId: String
+  bookId: ID
+  authorId: ID
   title: String
+  image: String
   publishedAt: String
 }
 
 input BookOrder {
-  field: BookOrderField
-  direction: OrderDirection
+  field: BookOrderField!
+  direction: OrderDirection!
 }
 
 enum BookOrderField {

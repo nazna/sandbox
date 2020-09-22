@@ -16,23 +16,31 @@ export enum OrderDirection {
   DESC = 'DESC',
 }
 
-export interface BookOrder {
-  field?: BookOrderField
-  direction?: OrderDirection
+export class BookOrder {
+  field: BookOrderField
+  direction: OrderDirection
 }
 
-export interface IQuery {
-  books(limit?: number, offset?: number, orderBy?: BookOrder): BookConnection | Promise<BookConnection>
-  book(bookId: string): Book | Promise<Book>
+export abstract class IQuery {
+  abstract authors(limit?: number, offset?: number): Author[] | Promise<Author[]>
+
+  abstract author(authorId: string): Author | Promise<Author>
+
+  abstract books(limit?: number, offset?: number, orderBy?: BookOrder): Book[] | Promise<Book[]>
+
+  abstract book(bookId: string): Book | Promise<Book>
 }
 
-export interface BookConnection {
-  total?: number
-  nodes?: Book[]
+export class Author {
+  authorId?: string
+  name?: string
+  avatar?: string
 }
 
-export interface Book {
+export class Book {
   bookId?: string
+  authorId?: string
   title?: string
+  image?: string
   publishedAt?: string
 }
