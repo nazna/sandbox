@@ -4,6 +4,8 @@
 
 ## Todos
 
+- [ ] Category `faker.hacker.verb()` を Books に追加する
+- [ ] 画像系を Unsplash に変更する
 - [ ] `/v1/authors` で `bookIds` を返すようにする
 - [ ] `/v1/books` と `/v1/authors` の Response を `total` を含む `Books` に変更する
 - [ ] 更新系 API を実装する (POST and PUT)
