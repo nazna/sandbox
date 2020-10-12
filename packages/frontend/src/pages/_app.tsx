@@ -1,7 +1,7 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import { AppProps } from 'next/app'
 import { Fragment } from 'react'
-import '../tailwind.css'
+import '../styles.css'
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
