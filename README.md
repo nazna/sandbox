@@ -1,4 +1,4 @@
-# exampple-webdev-stack
+# example-webdev-stack
 
 > A example webdev project with GraphQL
 
