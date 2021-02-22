@@ -9,7 +9,7 @@ export class BookResolver {
     const { items } = await search(id)
 
     if (items.length > 1) {
-      throw new Error('500: Internal Server Error.')
+      throw new Error('500: Internal Server Error')
     }
 
     const book = new Book()

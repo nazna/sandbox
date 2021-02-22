@@ -5,12 +5,12 @@ async function sleep(ms: number): Promise<NodeJS.Timeout> {
 }
 
 export async function search(id?: string): Promise<BookResponse> {
-  await sleep(500)
+  await sleep(300)
 
   const result = id ? books.filter((book) => book.bookId === id) : books
 
   if (result.length === 0) {
-    throw new Error('404: Not Found.')
+    throw new Error('404: Not Found')
   }
 
   return {
