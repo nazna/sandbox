@@ -1,26 +1,20 @@
-import { BookResponse, BookResponseItem, books } from '../mocks/book'
+import { BookResponse, books } from '../mocks/book'
 
 async function sleep(ms: number): Promise<NodeJS.Timeout> {
   return await new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-export async function find(id: string): Promise<BookResponseItem> {
+export async function search(id?: string): Promise<BookResponse> {
   await sleep(500)
 
-  const result = books.find((book) => book.bookId === id)
+  const result = id ? books.filter((book) => book.bookId === id) : books
 
-  if (!result) {
-    throw new Error('404: Not found')
+  if (result.length === 0) {
+    throw new Error('404: Not Found.')
   }
 
-  return result
-}
-
-export async function search(): Promise<BookResponse> {
-  await sleep(500)
-
   return {
-    total: books.length,
-    items: books,
+    total: result.length,
+    items: result,
   }
 }

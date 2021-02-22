@@ -1,17 +1,21 @@
 import { Arg, Query, Resolver } from 'type-graphql'
 import { Book } from '../entities/book'
-import { find, search } from '../services/book'
+import { search } from '../services/book'
 
 @Resolver(() => Book)
 export class BookResolver {
   @Query(() => Book, { description: 'A book information' })
   async book(@Arg('id') id: string): Promise<Book> {
-    const item = await find(id)
+    const { items } = await search(id)
+
+    if (items.length > 1) {
+      throw new Error('500: Internal Server Error.')
+    }
 
     const book = new Book()
-    book.id = item.bookId
-    book.title = item.title
-    book.description = item.description
+    book.id = items[0].bookId
+    book.title = items[0].title
+    book.description = items[0].description
 
     return book
   }
