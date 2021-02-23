@@ -1,22 +1,25 @@
-import { LikeResponse, likes } from '../mocks/like'
+import { LikeResponse, LikeResponseItem, likes } from '../mocks/like'
 
 async function sleep(ms: number): Promise<NodeJS.Timeout> {
   return await new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-export async function find(id: string): Promise<LikeResponse> {
+export async function search(ids: readonly string[]): Promise<LikeResponse> {
   await sleep(300)
 
-  const result = likes.find((like) => like.bookId === id)
+  const result = likes.filter((like) => ids.includes(like.bookId))
 
-  if (!result) {
+  if (result.length === 0) {
     throw new Error('404: Not found')
   }
 
-  return result
+  return {
+    total: result.length,
+    items: result,
+  }
 }
 
-export async function add(id: string): Promise<LikeResponse> {
+export async function add(id: string): Promise<LikeResponseItem> {
   await sleep(500)
 
   const result = likes.find((like) => like.bookId === id)
@@ -44,7 +47,7 @@ export async function add(id: string): Promise<LikeResponse> {
   }
 }
 
-export async function remove(id: string): Promise<LikeResponse> {
+export async function remove(id: string): Promise<LikeResponseItem> {
   await sleep(500)
 
   const result = likes.find((like) => like.bookId === id)
