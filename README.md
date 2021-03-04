@@ -24,7 +24,7 @@ GraphQL のスキーマの nullable/non-null の違いを検証するための�
 
 ![schema](.github/movie-non-null.png)
 
-## 考察
+## 結果
 
 結論から言うと例外が発生すると、発生した field から最も近い nullable な親(自身の field を含む)が `null` になる。
 
@@ -63,7 +63,7 @@ Query.author すらも取得できなくなる。
 }
 ```
 
-## 結論
+## 考察
 
 失敗する可能性のある返り値は nullable にしていくのが安定だと考えられる。
 バックエンド API へのリクエストで ObjectType を組み立てる場合などはデータの取得に失敗する可能性があるため、失敗したとき例外を catch して自分で field を詰め直すのでなければ nullable にすべきだと思う。
