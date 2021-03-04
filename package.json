@@ -1,0 +1,51 @@
+{
+  "name": "example-graphql-schema-design",
+  "version": "0.0.1",
+  "private": true,
+  "description": "An example to learn GraphQL schema design",
+  "license": "MIT",
+  "author": "nazna <naoya3e@gmail.com> (https://github.com/nazna)",
+  "scripts": {
+    "dev": "nest start --watch",
+    "start": "nest start",
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "postbuild": "node dist/generate-typings.js && npm run lint",
+    "lint": "npm run typecheck && npm run format",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write ."
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true
+  },
+  "dependencies": {
+    "@nestjs/common": "^7.6.13",
+    "@nestjs/core": "^7.6.13",
+    "@nestjs/graphql": "7.9.11",
+    "@nestjs/platform-express": "^7.6.13",
+    "apollo-server-express": "2.21.0",
+    "graphql": "15.5.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.6.6"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^7.5.6",
+    "@types/express": "^4.17.11",
+    "@types/node": "^14.14.31",
+    "prettier": "^2.2.1",
+    "prettier-plugin-organize-imports": "1.1.1",
+    "prettier-plugin-packagejson": "2.2.10",
+    "rimraf": "3.0.2",
+    "typescript": "^4.2.2"
+  },
+  "engines": {
+    "node": "15.x",
+    "npm": "6.x"
+  },
+  "volta": {
+    "node": "15.11.0",
+    "npm": "6.14.11"
+  }
+}
