@@ -1,6 +1,6 @@
 {
   "name": "example-graphql-versioning",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "description": "An example to learn GraphQL versioning",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "lint": "npm run typecheck && npm run prettier",
     "typecheck": "tsc --noEmit",
     "prettier": "prettier --write .",
-    "typegen": "node --require esbuild-register src/v1/generate-typings.ts"
+    "typegen": "node --require esbuild-register src/v2/generate-typings.ts"
   },
   "prettier": {
     "printWidth": 120,

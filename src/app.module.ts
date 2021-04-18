@@ -1,16 +1,8 @@
 import { Module } from '@nestjs/common'
-import { GraphQLModule } from '@nestjs/graphql'
-import { BookModule } from './v1/book/book.module'
+import { V1Module } from './v1/v1.module'
+import { V2Module } from './v2/v2.module'
 
 @Module({
-  imports: [
-    GraphQLModule.forRoot({
-      path: 'v1',
-      debug: true,
-      playground: true,
-      typePaths: ['./src/v1/**/*.graphql'],
-    }),
-    BookModule,
-  ],
+  imports: [V1Module, V2Module],
 })
 export class AppModule {}
