@@ -5,7 +5,7 @@ export function typegen() {
   const definitionsFactory = new GraphQLDefinitionsFactory()
 
   definitionsFactory.generate({
-    typePaths: ['./src/v2/**/*.graphql'],
+    typePaths: ['./src/v3/**/*.graphql'],
     path: resolve(__dirname, './graphql.schema.ts'),
     outputAs: 'class',
   })

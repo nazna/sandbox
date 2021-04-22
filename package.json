@@ -13,7 +13,7 @@
     "lint": "npm run typecheck && npm run prettier",
     "typecheck": "tsc --noEmit",
     "prettier": "prettier --write .",
-    "typegen": "node --require esbuild-register src/v2/generate-typings.ts"
+    "typegen": "node --require esbuild-register src/typegen.ts"
   },
   "prettier": {
     "printWidth": 120,
