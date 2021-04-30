@@ -8,6 +8,7 @@ import { BookModule } from './book/book.module'
     GraphQLModule.forRoot({
       path: 'v3',
       debug: true,
+      tracing: true,
       playground: {
         settings: {
           'request.credentials': 'same-origin',
