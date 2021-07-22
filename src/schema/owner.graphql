@@ -1,0 +1,16 @@
+type Query {
+  owner(ownerId: ID!): Owner
+  owners(limit: Int = 10, offset: Int = 0): OwnerConnection
+}
+
+type Owner implements Node {
+  id: ID!
+  name: String!
+  catIds: [String!]!
+  cats: [Cat!]
+}
+
+type OwnerConnection implements Connection {
+  pageInfo: PageInfo!
+  nodes: [Owner!]!
+}

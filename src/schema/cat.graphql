@@ -1,0 +1,16 @@
+type Query {
+  cat(catId: ID!): Cat
+  cats(limit: Int = 10, offset: Int = 0): CatConnection
+}
+
+type Cat implements Node {
+  id: ID!
+  name: String!
+  ownerId: String!
+  owner: Owner
+}
+
+type CatConnection implements Connection {
+  pageInfo: PageInfo!
+  nodes: [Cat!]!
+}
