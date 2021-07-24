@@ -7,6 +7,13 @@
 
 /* tslint:disable */
 /* eslint-disable */
+export enum CatSort {
+    ID_ASC = "ID_ASC",
+    ID_DESC = "ID_DESC",
+    CREATED_ASC = "CREATED_ASC",
+    CREATED_DESC = "CREATED_DESC"
+}
+
 export interface Node {
     id: string;
 }
@@ -18,7 +25,7 @@ export interface Connection {
 export abstract class IQuery {
     abstract cat(catId: string): Nullable<Cat> | Promise<Nullable<Cat>>;
 
-    abstract cats(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<CatConnection> | Promise<Nullable<CatConnection>>;
+    abstract cats(limit?: Nullable<number>, offset?: Nullable<number>, sort?: Nullable<CatSort>): Nullable<CatConnection> | Promise<Nullable<CatConnection>>;
 
     abstract owner(ownerId: string): Nullable<Owner> | Promise<Nullable<Owner>>;
 

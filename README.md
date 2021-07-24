@@ -51,3 +51,16 @@ query CatValidationError {
   }
 }
 ```
+
+## Memo
+
+EnumResolver 実装してみても良いかも
+
+```typescript
+export const CatSortResolver = {
+  ID_ASC: '+cat_id',
+  ID_DESC: '-cat_id',
+  CREATED_ASC: '+created_at',
+  CREATED_DESC: '-created_at',
+} as const
+```
