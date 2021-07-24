@@ -10,4 +10,8 @@ export class CatsArgs {
   @Min(0)
   @Max(20)
   offset: number
+
+  constructor(init?: Partial<CatsArgs>) {
+    Object.assign(this, init)
+  }
 }

@@ -10,4 +10,8 @@ export class OwnersArgs {
   @Min(0)
   @Max(20)
   offset: number
+
+  constructor(init?: Partial<OwnersArgs>) {
+    Object.assign(this, init)
+  }
 }
