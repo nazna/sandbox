@@ -6,6 +6,9 @@ import { OwnerModule } from './owner/owner.module'
 @Module({
   imports: [
     GraphQLModule.forRoot({
+      debug: false,
+      tracing: true,
+      playground: true,
       typePaths: ['./src/**/*.graphql'],
       fieldResolverEnhancers: ['filters', 'guards'],
     }),
