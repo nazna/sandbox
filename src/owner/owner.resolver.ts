@@ -9,18 +9,18 @@ export class OwnerResolver {
   constructor(private readonly ownerService: OwnerService) {}
 
   @Query()
-  owner(@Args() args: OwnerArgs): Owner | null {
-    return this.ownerService.findById(args.ownerId)
+  async owner(@Args() args: OwnerArgs): Promise<Owner> {
+    return await this.ownerService.findOne(args.ownerId)
   }
 
   @Query()
-  owners(@Args() args: OwnersArgs): OwnerConnection | null {
-    return this.ownerService.find(args.limit, args.offset)
+  async owners(@Args() args: OwnersArgs): Promise<OwnerConnection> {
+    return await this.ownerService.search(args.limit, args.offset)
   }
 
   @ResolveField()
-  cats(@Parent() owner: Owner): Cat[] | null {
+  async cats(@Parent() owner: Owner): Promise<Cat[]> {
     console.log(owner)
-    return null
+    throw new Error('NOT IMPLEMENTED')
   }
 }

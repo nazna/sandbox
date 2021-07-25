@@ -6,7 +6,7 @@ import { GetOwnersItem } from './owner.types'
 
 @Injectable()
 export class OwnerService {
-  findById(id: string): Owner {
+  async findOne(id: string): Promise<Owner> {
     const response = ownersResponse
     const result = response.owners.find((owner) => owner.id === id)
 
@@ -17,7 +17,7 @@ export class OwnerService {
     return this.mapToOwner(result)
   }
 
-  find(limit: number, offset: number): OwnerConnection {
+  async search(limit: number, offset: number): Promise<OwnerConnection> {
     const response = ownersResponse
     const result = response.owners.slice(offset, limit + offset)
 

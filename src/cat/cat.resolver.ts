@@ -9,18 +9,18 @@ export class CatResolver {
   constructor(private readonly catService: CatService) {}
 
   @Query()
-  cat(@Args() args: CatArgs): Cat | null {
-    return this.catService.findById(args.catId)
+  async cat(@Args() args: CatArgs): Promise<Cat> {
+    return await this.catService.findOne(args.catId)
   }
 
   @Query()
-  cats(@Args() args: CatsArgs): CatConnection | null {
-    return this.catService.find(args.limit, args.offset)
+  async cats(@Args() args: CatsArgs): Promise<CatConnection> {
+    return await this.catService.search(args.limit, args.offset)
   }
 
   @ResolveField()
-  owner(@Parent() cat: Cat): Owner | null {
+  async owner(@Parent() cat: Cat): Promise<Owner> {
     console.log(cat)
-    return null
+    throw new Error('NOT IMPLEMENTED')
   }
 }

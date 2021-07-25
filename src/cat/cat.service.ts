@@ -6,7 +6,7 @@ import { GetCatsItem } from './cat.types'
 
 @Injectable()
 export class CatService {
-  findById(id: string): Cat {
+  async findOne(id: string): Promise<Cat> {
     const response = catsResponse
     const result = response.cats.find((cat) => cat.id === id)
 
@@ -17,7 +17,7 @@ export class CatService {
     return this.mapToCat(result)
   }
 
-  find(limit: number, offset: number): CatConnection {
+  async search(limit: number, offset: number): Promise<CatConnection> {
     const response = catsResponse
     const result = response.cats.slice(offset, limit + offset)
 
