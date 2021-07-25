@@ -5,16 +5,16 @@ export class CatsArgs {
   @IsNotEmpty()
   @Min(1)
   @Max(10)
-  limit: number
+  readonly limit: number
 
   @IsNotEmpty()
   @Min(0)
   @Max(20)
-  offset: number
+  readonly offset: number
 
   @IsNotEmpty()
   @IsEnum(CatSort)
-  sort: CatSort
+  readonly sort: CatSort
 
   constructor(init?: Partial<CatsArgs>) {
     Object.assign(this, init)

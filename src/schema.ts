@@ -14,6 +14,13 @@ export enum CatSort {
     CREATED_DESC = "CREATED_DESC"
 }
 
+export enum OwnerSort {
+    ID_ASC = "ID_ASC",
+    ID_DESC = "ID_DESC",
+    CREATED_ASC = "CREATED_ASC",
+    CREATED_DESC = "CREATED_DESC"
+}
+
 export interface Node {
     id: string;
 }
@@ -29,7 +36,7 @@ export abstract class IQuery {
 
     abstract owner(ownerId: string): Nullable<Owner> | Promise<Nullable<Owner>>;
 
-    abstract owners(limit?: Nullable<number>, offset?: Nullable<number>): Nullable<OwnerConnection> | Promise<Nullable<OwnerConnection>>;
+    abstract owners(limit?: Nullable<number>, offset?: Nullable<number>, sort?: Nullable<OwnerSort>): Nullable<OwnerConnection> | Promise<Nullable<OwnerConnection>>;
 }
 
 export class Cat implements Node {

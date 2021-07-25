@@ -1,15 +1,20 @@
-import { IsNotEmpty, Max, Min } from 'class-validator'
+import { IsEnum, IsNotEmpty, Max, Min } from 'class-validator'
+import { OwnerSort } from '../../schema'
 
 export class OwnersArgs {
   @IsNotEmpty()
   @Min(1)
   @Max(10)
-  limit: number
+  readonly limit: number
 
   @IsNotEmpty()
   @Min(0)
   @Max(20)
-  offset: number
+  readonly offset: number
+
+  @IsNotEmpty()
+  @IsEnum(OwnerSort)
+  readonly sort: OwnerSort
 
   constructor(init?: Partial<OwnersArgs>) {
     Object.assign(this, init)

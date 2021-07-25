@@ -1,6 +1,6 @@
 type Query {
   owner(ownerId: ID!): Owner
-  owners(limit: Int = 10, offset: Int = 0): OwnerConnection
+  owners(limit: Int = 10, offset: Int = 0, sort: OwnerSort = ID_ASC): OwnerConnection
 }
 
 type Owner implements Node {
@@ -13,4 +13,11 @@ type Owner implements Node {
 type OwnerConnection implements Connection {
   pageInfo: PageInfo!
   nodes: [Owner!]!
+}
+
+enum OwnerSort {
+  ID_ASC
+  ID_DESC
+  CREATED_ASC
+  CREATED_DESC
 }
