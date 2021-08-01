@@ -1,8 +1,8 @@
 {
-  "name": "example-nestjs-graphql-performance",
-  "version": "0.1.0",
+  "name": "example-nestjs-graphql-prisma",
+  "version": "0.2.0",
   "private": true,
-  "description": "An example to test performance NestJS GraphQL",
+  "description": "An example NestJS + GraphQL + Prisma",
   "license": "MIT",
   "author": "nazna <naznagg@gmail.com>",
   "scripts": {

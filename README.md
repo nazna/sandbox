@@ -1,6 +1,6 @@
-# example-nestjs-graphql-performance
+# example-nestjs-graphql-prisma
 
-> An example to test performance NestJS GraphQL
+> An example NestJS + GraphQL + Prisma
 
 ## Todo
 
