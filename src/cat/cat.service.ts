@@ -1,41 +1,23 @@
-import { Injectable, NotFoundException } from '@nestjs/common'
-import { catsResponse } from '../helpers/fixtures/cats'
-import { pageInfo } from '../helpers/page-info'
-import { Cat, CatConnection, PageInfo } from '../schema'
-import { GetCatsItem } from './cat.types'
+import { Injectable } from '@nestjs/common'
+import { Cat, CatConnection } from '../schema'
+import { CatMapper } from './cat.mapper'
+import { CatRepository } from './cat.repository'
 
 @Injectable()
 export class CatService {
-  async findOne(id: string): Promise<Cat> {
-    const response = catsResponse
-    const result = response.cats.find((cat) => cat.id === id)
+  constructor(private readonly catRepository: CatRepository) {}
 
-    if (!result) {
-      throw new NotFoundException()
-    }
-
-    return this.mapToCat(result)
+  async find(id: string): Promise<Cat> {
+    const cat = await this.catRepository.findOne({ where: { id } })
+    return CatMapper.toEntity(cat)
   }
 
   async search(limit: number, offset: number): Promise<CatConnection> {
-    const response = catsResponse
-    const result = response.cats.slice(offset, limit + offset)
+    const cats = await this.catRepository.findMany({
+      skip: offset,
+      take: limit,
+    })
 
-    return this.mapToCatConnection(pageInfo(response.limit, response.offset, response.total), result)
-  }
-
-  private mapToCat(result: GetCatsItem): Cat {
-    return {
-      id: result.id,
-      name: result.name,
-      ownerId: result.ownerId,
-    }
-  }
-
-  private mapToCatConnection(pageInfo: PageInfo, result: GetCatsItem[]): CatConnection {
-    return {
-      pageInfo,
-      nodes: result.map(this.mapToCat),
-    }
+    return CatMapper.toEntityConnection(cats, limit, offset)
   }
 }

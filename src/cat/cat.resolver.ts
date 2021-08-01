@@ -10,7 +10,7 @@ export class CatResolver {
 
   @Query()
   async cat(@Args() args: CatArgs): Promise<Cat> {
-    return await this.catService.findOne(args.catId)
+    return await this.catService.find(args.catId)
   }
 
   @Query()
