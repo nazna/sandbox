@@ -6,8 +6,6 @@ type Query {
 type Owner implements Node {
   id: ID!
   name: String!
-  catIds: [String!]!
-  cats: [Cat!]
 }
 
 type OwnerConnection implements Connection {

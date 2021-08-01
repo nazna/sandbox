@@ -20,13 +20,9 @@
 
 ```graphql
 query Cat {
-  cat(catId: "c1") {
+  cat(catId: "YIq-n7_y-_osFaGYdR34Y") {
     id
     name
-    owner {
-      id
-      name
-    }
   }
 }
 
@@ -40,16 +36,19 @@ query Cats {
     nodes {
       id
       name
-      owner {
-        id
-        name
-      }
     }
   }
 }
 
-query CatValidationError {
-  cat(catId: "1") {
+query CatOnNotFoundError {
+  cat(catId: "notfound") {
+    id
+    name
+  }
+}
+
+query CatOnValidationError {
+  cat(catId: "invalid#") {
     id
     name
   }

@@ -12,6 +12,7 @@
     "prebuild": "rimraf dist && npm run typegen",
     "build": "nest build",
     "typegen": "ts-node src/typegen.ts",
+    "db": "rimraf ./prisma/dev.db && npm run db:generate && npm run db:push && npm run db:seed",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "prisma db seed --preview-feature",

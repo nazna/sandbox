@@ -9,6 +9,7 @@ export class CatService {
 
   async find(id: string): Promise<Cat> {
     const cat = await this.catRepository.findOne({ where: { id } })
+
     return CatMapper.toEntity(cat)
   }
 

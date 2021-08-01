@@ -1,5 +1,5 @@
-import { Args, Parent, Query, ResolveField, Resolver } from '@nestjs/graphql'
-import { Cat, Owner, OwnerConnection } from '../schema'
+import { Args, Query, Resolver } from '@nestjs/graphql'
+import { Owner, OwnerConnection } from '../schema'
 import { OwnerArgs } from './args/owner'
 import { OwnersArgs } from './args/owners'
 import { OwnerService } from './owner.service'
@@ -10,17 +10,11 @@ export class OwnerResolver {
 
   @Query()
   async owner(@Args() args: OwnerArgs): Promise<Owner> {
-    return await this.ownerService.findOne(args.ownerId)
+    return await this.ownerService.find(args.ownerId)
   }
 
   @Query()
   async owners(@Args() args: OwnersArgs): Promise<OwnerConnection> {
     return await this.ownerService.search(args.limit, args.offset)
-  }
-
-  @ResolveField()
-  async cats(@Parent() owner: Owner): Promise<Cat[]> {
-    console.log(owner)
-    throw new Error('NOT IMPLEMENTED')
   }
 }

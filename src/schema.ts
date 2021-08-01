@@ -60,8 +60,6 @@ export class PageInfo {
 export class Owner implements Node {
     id: string;
     name: string;
-    catIds: string[];
-    cats?: Nullable<Cat[]>;
 }
 
 export class OwnerConnection implements Connection {

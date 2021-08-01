@@ -1,41 +1,24 @@
-import { Injectable, NotFoundException } from '@nestjs/common'
-import { ownersResponse } from '../helpers/fixtures/owners'
-import { pageInfo } from '../helpers/page-info'
-import { Owner, OwnerConnection, PageInfo } from '../schema'
-import { GetOwnersItem } from './owner.types'
+import { Injectable } from '@nestjs/common'
+import { Owner, OwnerConnection } from '../schema'
+import { OwnerMapper } from './owner.mapper'
+import { OwnerRepository } from './owner.repository'
 
 @Injectable()
 export class OwnerService {
-  async findOne(id: string): Promise<Owner> {
-    const response = ownersResponse
-    const result = response.owners.find((owner) => owner.id === id)
+  constructor(private readonly ownerRepository: OwnerRepository) {}
 
-    if (!result) {
-      throw new NotFoundException()
-    }
+  async find(id: string): Promise<Owner> {
+    const owner = await this.ownerRepository.findOne({ where: { id } })
 
-    return this.mapToOwner(result)
+    return OwnerMapper.toEntity(owner)
   }
 
   async search(limit: number, offset: number): Promise<OwnerConnection> {
-    const response = ownersResponse
-    const result = response.owners.slice(offset, limit + offset)
+    const owners = await this.ownerRepository.findMany({
+      skip: offset,
+      take: limit,
+    })
 
-    return this.mapToOwnerConnection(pageInfo(response.limit, response.offset, response.total), result)
-  }
-
-  private mapToOwner(result: GetOwnersItem): Owner {
-    return {
-      id: result.id,
-      name: result.name,
-      catIds: result.catIds,
-    }
-  }
-
-  private mapToOwnerConnection(pageInfo: PageInfo, result: GetOwnersItem[]): OwnerConnection {
-    return {
-      pageInfo,
-      nodes: result.map(this.mapToOwner),
-    }
+    return OwnerMapper.toEntityConnection(owners, limit, offset)
   }
 }
