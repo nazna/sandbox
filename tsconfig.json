@@ -8,9 +8,11 @@
     "moduleResolution": "node",
     "outDir": "./dist",
     "removeComments": true,
+    "rootDir": "./src",
     "skipLibCheck": true,
     "strict": true,
     "strictPropertyInitialization": false,
     "target": "ESNext"
-  }
+  },
+  "exclude": ["node_modules", "dist", "prisma"]
 }
