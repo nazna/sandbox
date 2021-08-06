@@ -3,6 +3,12 @@ import { Owner, OwnerConnection } from '../schema'
 import { OwnerMapper } from './owner.mapper'
 import { OwnerRepository } from './owner.repository'
 
+export interface SearchOwnerPayload {
+  limit: number
+  offset: number
+  ownerIds?: string[]
+}
+
 @Injectable()
 export class OwnerService {
   constructor(private readonly ownerRepository: OwnerRepository) {}
@@ -13,12 +19,19 @@ export class OwnerService {
     return OwnerMapper.toEntity(owner)
   }
 
-  async search(limit: number, offset: number): Promise<OwnerConnection> {
+  async search(payload: SearchOwnerPayload): Promise<OwnerConnection> {
     const owners = await this.ownerRepository.findMany({
-      skip: offset,
-      take: limit,
+      skip: payload.offset,
+      take: payload.limit,
+      where: {
+        OR: [
+          {
+            id: { in: payload.ownerIds },
+          },
+        ],
+      },
     })
 
-    return OwnerMapper.toEntityConnection(owners, limit, offset)
+    return OwnerMapper.toEntityConnection(owners, payload.limit, payload.offset)
   }
 }

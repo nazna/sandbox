@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common'
+import { OwnerModule } from '../owner/owner.module'
+import { CatOwnerLoader } from './cat-owner.loader'
 import { CatRepository } from './cat.repository'
 import { CatResolver } from './cat.resolver'
 import { CatService } from './cat.service'
 
 @Module({
-  providers: [CatResolver, CatService, CatRepository],
+  imports: [OwnerModule],
+  providers: [CatResolver, CatService, CatRepository, CatOwnerLoader],
 })
 export class CatModule {}
