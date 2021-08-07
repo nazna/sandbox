@@ -18,7 +18,7 @@ export abstract class PrismaRepository
     this.$on('query', (e: Prisma.QueryEvent) => {
       const params = JSON.parse(e.params)
       const sql = params
-        .reduce((acc: string, cur: string) => acc.replace(/\?/g, cur), e.query)
+        .reduce((acc: string, cur: number) => acc.replace(/\?/, String(cur)), e.query)
         .replace(/`(.+?)`/g, '$1')
 
       Logger.debug(`[Prisma:query] ${e.duration}ms ${sql}`)

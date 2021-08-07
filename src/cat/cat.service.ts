@@ -14,11 +14,11 @@ export class CatService {
   }
 
   async search(limit: number, offset: number): Promise<CatConnection> {
-    const cats = await this.catRepository.findMany({
+    const { result, total } = await this.catRepository.findMany({
       skip: offset,
       take: limit,
     })
 
-    return CatMapper.toEntityConnection(cats)
+    return CatMapper.toEntityConnection(result, total)
   }
 }

@@ -16,11 +16,16 @@ export class OwnerRepository extends PrismaRepository {
     return result
   }
 
-  async findMany(args?: Prisma.OwnerFindManyArgs): Promise<PrismaOwner[]> {
-    const result = await this.owner.findMany({
-      ...args,
-    })
+  async findMany(args?: Prisma.OwnerFindManyArgs): Promise<{ result: PrismaOwner[]; total: number }> {
+    const [result, total] = await Promise.all([
+      this.owner.findMany({
+        ...args,
+      }),
+      this.owner.count({
+        where: args?.where,
+      }),
+    ])
 
-    return result
+    return { result, total }
   }
 }

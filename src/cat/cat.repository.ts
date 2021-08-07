@@ -16,11 +16,16 @@ export class CatRepository extends PrismaRepository {
     return result
   }
 
-  async findMany(args?: Prisma.CatFindManyArgs): Promise<PrismaCat[]> {
-    const result = await this.cat.findMany({
-      ...args,
-    })
+  async findMany(args?: Prisma.CatFindManyArgs): Promise<{ result: PrismaCat[]; total: number }> {
+    const [result, total] = await Promise.all([
+      this.cat.findMany({
+        ...args,
+      }),
+      this.cat.count({
+        where: args?.where,
+      }),
+    ])
 
-    return result
+    return { result, total }
   }
 }

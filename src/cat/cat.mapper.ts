@@ -14,10 +14,10 @@ export class CatMapper {
     return orms.map(this.toEntity)
   }
 
-  static toEntityConnection(orms: PrismaCat[]): CatConnection {
+  static toEntityConnection(orms: PrismaCat[], total: number): CatConnection {
     return {
       nodes: this.toEntities(orms),
-      totalCount: orms.length,
+      totalCount: total,
     }
   }
 }

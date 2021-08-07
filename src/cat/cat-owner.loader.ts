@@ -14,13 +14,13 @@ export class CatOwnerLoader {
   }
 
   private async batchLoad(keys: readonly string[]): Promise<(Owner | NotFoundException)[]> {
-    const owners = await this.ownerRepository.findMany({
+    const { result } = await this.ownerRepository.findMany({
       where: {
         id: { in: [...keys] },
       },
     })
 
-    const ownersMap: Map<string, Owner> = new Map(owners.map((owner) => [owner.id, owner]))
+    const ownersMap: Map<string, Owner> = new Map(result.map((owner) => [owner.id, owner]))
 
     return keys.map((key) => ownersMap.get(key) || new NotFoundException())
   }

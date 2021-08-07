@@ -13,10 +13,10 @@ export class OwnerMapper {
     return orms.map(this.toEntity)
   }
 
-  static toEntityConnection(orms: PrismaOwner[]): OwnerConnection {
+  static toEntityConnection(orms: PrismaOwner[], total: number): OwnerConnection {
     return {
       nodes: this.toEntities(orms),
-      totalCount: orms.length,
+      totalCount: total,
     }
   }
 }

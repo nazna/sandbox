@@ -14,11 +14,11 @@ export class OwnerService {
   }
 
   async search(limit: number, offset: number): Promise<OwnerConnection> {
-    const owners = await this.ownerRepository.findMany({
+    const { result, total } = await this.ownerRepository.findMany({
       skip: offset,
       take: limit,
     })
 
-    return OwnerMapper.toEntityConnection(owners)
+    return OwnerMapper.toEntityConnection(result, total)
   }
 }
