@@ -15,6 +15,6 @@ export class OwnerResolver {
 
   @Query()
   async owners(@Args() args: OwnersArgs): Promise<OwnerConnection> {
-    return await this.ownerService.search({ limit: args.limit, offset: args.offset })
+    return await this.ownerService.search(args.limit, args.offset)
   }
 }
