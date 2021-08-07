@@ -9,7 +9,7 @@ import { OwnerModule } from './owner/owner.module'
       debug: false,
       tracing: true,
       playground: true,
-      typePaths: ['./src/**/*.graphql'],
+      typePaths: ['./src/schema/*.graphql'],
       fieldResolverEnhancers: ['filters', 'guards'],
     }),
     CatModule,

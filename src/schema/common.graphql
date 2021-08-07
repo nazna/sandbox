@@ -3,11 +3,5 @@ interface Node {
 }
 
 interface Connection {
-  pageInfo: PageInfo!
-}
-
-type PageInfo {
-  limit: Int!
-  offset: Int!
-  total: Int!
+  totalCount: Int!
 }

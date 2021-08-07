@@ -8,17 +8,15 @@
 /* tslint:disable */
 /* eslint-disable */
 export enum CatSort {
-    ID_ASC = "ID_ASC",
-    ID_DESC = "ID_DESC",
     CREATED_ASC = "CREATED_ASC",
-    CREATED_DESC = "CREATED_DESC"
+    CREATED_DESC = "CREATED_DESC",
+    STARGAZERS_DESC = "STARGAZERS_DESC"
 }
 
 export enum OwnerSort {
-    ID_ASC = "ID_ASC",
-    ID_DESC = "ID_DESC",
     CREATED_ASC = "CREATED_ASC",
-    CREATED_DESC = "CREATED_DESC"
+    CREATED_DESC = "CREATED_DESC",
+    STARGAZERS_DESC = "STARGAZERS_DESC"
 }
 
 export interface Node {
@@ -26,17 +24,17 @@ export interface Node {
 }
 
 export interface Connection {
-    pageInfo: PageInfo;
+    totalCount: number;
 }
 
 export abstract class IQuery {
     abstract cat(catId: string): Nullable<Cat> | Promise<Nullable<Cat>>;
 
-    abstract cats(limit?: Nullable<number>, offset?: Nullable<number>, sort?: Nullable<CatSort>): Nullable<CatConnection> | Promise<Nullable<CatConnection>>;
+    abstract cats(limit?: Nullable<number>, offset?: Nullable<number>, sort?: Nullable<CatSort>): CatConnection | Promise<CatConnection>;
 
     abstract owner(ownerId: string): Nullable<Owner> | Promise<Nullable<Owner>>;
 
-    abstract owners(limit?: Nullable<number>, offset?: Nullable<number>, sort?: Nullable<OwnerSort>): Nullable<OwnerConnection> | Promise<Nullable<OwnerConnection>>;
+    abstract owners(limit?: Nullable<number>, offset?: Nullable<number>, sort?: Nullable<OwnerSort>): OwnerConnection | Promise<OwnerConnection>;
 }
 
 export class Cat implements Node {
@@ -47,14 +45,8 @@ export class Cat implements Node {
 }
 
 export class CatConnection implements Connection {
-    pageInfo: PageInfo;
-    nodes: Cat[];
-}
-
-export class PageInfo {
-    limit: number;
-    offset: number;
-    total: number;
+    nodes?: Nullable<Nullable<Cat>[]>;
+    totalCount: number;
 }
 
 export class Owner implements Node {
@@ -63,8 +55,8 @@ export class Owner implements Node {
 }
 
 export class OwnerConnection implements Connection {
-    pageInfo: PageInfo;
-    nodes: Owner[];
+    nodes?: Nullable<Nullable<Owner>[]>;
+    totalCount: number;
 }
 
 type Nullable<T> = T | null;

@@ -1,6 +1,6 @@
 type Query {
   cat(catId: ID!): Cat
-  cats(limit: Int = 10, offset: Int = 0, sort: CatSort = ID_ASC): CatConnection
+  cats(limit: Int = 10, offset: Int = 0, sort: CatSort = CREATED_DESC): CatConnection!
 }
 
 type Cat implements Node {
@@ -11,13 +11,12 @@ type Cat implements Node {
 }
 
 type CatConnection implements Connection {
-  pageInfo: PageInfo!
-  nodes: [Cat!]!
+  nodes: [Cat]
+  totalCount: Int!
 }
 
 enum CatSort {
-  ID_ASC
-  ID_DESC
   CREATED_ASC
   CREATED_DESC
+  STARGAZERS_DESC
 }

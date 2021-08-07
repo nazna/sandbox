@@ -6,7 +6,6 @@ import { OwnerRepository } from './owner.repository'
 export interface SearchOwnerPayload {
   limit: number
   offset: number
-  ownerIds?: string[]
 }
 
 @Injectable()
@@ -23,15 +22,8 @@ export class OwnerService {
     const owners = await this.ownerRepository.findMany({
       skip: payload.offset,
       take: payload.limit,
-      where: {
-        OR: [
-          {
-            id: { in: payload.ownerIds },
-          },
-        ],
-      },
     })
 
-    return OwnerMapper.toEntityConnection(owners, payload.limit, payload.offset)
+    return OwnerMapper.toEntityConnection(owners)
   }
 }

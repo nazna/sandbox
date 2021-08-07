@@ -19,6 +19,6 @@ export class CatService {
       take: limit,
     })
 
-    return CatMapper.toEntityConnection(cats, limit, offset)
+    return CatMapper.toEntityConnection(cats)
   }
 }

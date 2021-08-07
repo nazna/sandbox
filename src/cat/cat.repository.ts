@@ -23,10 +23,4 @@ export class CatRepository extends PrismaRepository {
 
     return result
   }
-
-  // async create(): Promise<Cat> {}
-
-  // async update(): Promise<Cat> {}
-
-  // async delete(): Promise<Cat> {}
 }

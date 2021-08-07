@@ -5,6 +5,6 @@ import { OwnerService } from './owner.service'
 
 @Module({
   providers: [OwnerResolver, OwnerService, OwnerRepository],
-  exports: [OwnerService],
+  exports: [OwnerRepository],
 })
 export class OwnerModule {}
