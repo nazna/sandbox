@@ -8,7 +8,7 @@ async function bootstrap() {
 
   const app = await NestFactory.create(AppModule)
 
-  app.use(helmet())
+  app.use(helmet({ contentSecurityPolicy: process.env.NODE_CONFIG_ENV === 'production' ? undefined : false }))
 
   app.useGlobalPipes(
     new ValidationPipe({
