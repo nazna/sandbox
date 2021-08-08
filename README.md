@@ -4,12 +4,17 @@
 
 ## Todo
 
-- [ ] [fieldResolverEnhancers](https://docs.nestjs.com/graphql/other-features#execute-enhancers-at-the-field-resolver-level)を有効にしたときのパフォーマンス
-  - [ ] Root Resolver で普通なレスポンスサイズ
-  - [ ] Root Resolver で巨大なレスポンスサイズ
-  - [ ] Field Resolver で普通なレスポンスサイズ
-  - [ ] Field Resolver で巨大なレスポンスサイズ
-- [ ] nanoid が衝突して create 失敗したときの処理
+- レート制限
+- クエリ複雑さ制限
+- ホワイトリストクエリ または Persisted Query
+- Create Mutation で `nanoid` が衝突したときのリトライ処理とエラーハンドリング
+- 性能テスト
+  - [fieldResolverEnhancers](https://docs.nestjs.com/graphql/other-features#execute-enhancers-at-the-field-resolver-level) の設定ありなし
+  - Root resolver でレスポンスサイズ大小, Field resolver でレスポンスサイズ大小
+- Union type でデータ種別を分けてみる実装
+- API リクエストの実装例
+  - リトライ処理
+  - [SWAPI](https://swapi.dev/)
 
 ## Query
 
