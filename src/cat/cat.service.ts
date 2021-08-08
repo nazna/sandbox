@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
+import { ErrorCode, ExceptionInfo } from '../helpers/error-code'
 import { Cat, CatConnection } from '../schema'
 import { CatMapper } from './cat.mapper'
 import { CatRepository } from './cat.repository'
@@ -8,9 +9,17 @@ export class CatService {
   constructor(private readonly catRepository: CatRepository) {}
 
   async find(id: string): Promise<Cat> {
-    const cat = await this.catRepository.findOne({ where: { id } })
+    const result = await this.catRepository.findOne({ where: { id } })
 
-    return CatMapper.toEntity(cat)
+    if (!result) {
+      const info: ExceptionInfo = {
+        code: ErrorCode.E_CAT_NOT_FOUND,
+        message: `Cat is not found. id:${id}`,
+      }
+      throw new NotFoundException(info)
+    }
+
+    return CatMapper.toEntity(result)
   }
 
   async search(limit: number, offset: number): Promise<CatConnection> {

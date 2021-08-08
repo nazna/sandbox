@@ -1,17 +1,13 @@
-import { Injectable, NotFoundException } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { Owner as PrismaOwner, Prisma } from '@prisma/client'
 import { PrismaRepository } from '../helpers/prisma.repository'
 
 @Injectable()
 export class OwnerRepository extends PrismaRepository {
-  async findOne(args: Prisma.OwnerFindUniqueArgs): Promise<PrismaOwner> {
+  async findOne(args: Prisma.OwnerFindUniqueArgs): Promise<PrismaOwner | null> {
     const result = await this.owner.findUnique({
       ...args,
     })
-
-    if (!result) {
-      throw new NotFoundException()
-    }
 
     return result
   }

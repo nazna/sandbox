@@ -1,8 +1,9 @@
-import { IsNotEmpty, Matches } from 'class-validator'
+import { IsNotEmpty, Length, Matches } from 'class-validator'
 
 export class CatArgs {
   @IsNotEmpty()
-  @Matches(/^[A-Za-z0-9_-]+$/)
+  @Matches(/^[a-z]+$/)
+  @Length(10, 10)
   readonly catId: string
 
   constructor(init?: Partial<CatArgs>) {

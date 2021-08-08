@@ -1,4 +1,5 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
+import { ErrorCode, ExceptionInfo } from '../helpers/error-code'
 import { Owner, OwnerConnection } from '../schema'
 import { OwnerMapper } from './owner.mapper'
 import { OwnerRepository } from './owner.repository'
@@ -8,9 +9,17 @@ export class OwnerService {
   constructor(private readonly ownerRepository: OwnerRepository) {}
 
   async find(id: string): Promise<Owner> {
-    const owner = await this.ownerRepository.findOne({ where: { id } })
+    const result = await this.ownerRepository.findOne({ where: { id } })
 
-    return OwnerMapper.toEntity(owner)
+    if (!result) {
+      const info: ExceptionInfo = {
+        code: ErrorCode.E_CAT_NOT_FOUND,
+        message: `Owner is not found. id:${id}`,
+      }
+      throw new NotFoundException(info)
+    }
+
+    return OwnerMapper.toEntity(result)
   }
 
   async search(limit: number, offset: number): Promise<OwnerConnection> {

@@ -1,17 +1,13 @@
-import { Injectable, NotFoundException } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { Cat as PrismaCat, Prisma } from '@prisma/client'
 import { PrismaRepository } from '../helpers/prisma.repository'
 
 @Injectable()
 export class CatRepository extends PrismaRepository {
-  async findOne(args: Prisma.CatFindUniqueArgs): Promise<PrismaCat> {
+  async findOne(args: Prisma.CatFindUniqueArgs): Promise<PrismaCat | null> {
     const result = await this.cat.findUnique({
       ...args,
     })
-
-    if (!result) {
-      throw new NotFoundException()
-    }
 
     return result
   }
