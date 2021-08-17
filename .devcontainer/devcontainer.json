@@ -1,0 +1,14 @@
+{
+	"name": "example-ktor-backend",
+	"build": {
+		"dockerfile": "Dockerfile",
+	},
+	"settings": {
+		"java.home": "/docker-java-home"
+	},
+	"extensions": [
+		"vscjava.vscode-java-pack",
+		"fwcd.kotlin"
+	],
+	"remoteUser": "vscode"
+}
