@@ -1,7 +1,8 @@
 plugins {
-  id 'org.springframework.boot' version '2.5.6'
+  id 'org.springframework.boot' version '2.6.1'
   id 'io.spring.dependency-management' version '1.0.11.RELEASE'
   id 'java'
+  id 'idea'
 }
 
 group = 'dev.nazna'
@@ -10,8 +11,8 @@ version = '0.0.1-SNAPSHOT'
 task copyDomaResources(type: Sync) {
   from sourceSets.main.resources.srcDirs
   into compileJava.destinationDirectory
-  include "doma.compile.config"
-  include "META-INF/**/*.sql"
+  include 'doma.compile.config'
+  include 'META-INF/**/*.sql'
 }
 
 compileJava {
@@ -30,10 +31,10 @@ repositories {
 }
 
 dependencies {
-  implementation 'org.springframework.boot:spring-boot-starter-web:2.5.6'
-  implementation 'org.springframework.boot:spring-boot-starter-validation:2.5.6'
-  annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:2.5.6'
-  testImplementation 'org.springframework.boot:spring-boot-starter-test:2.5.6'
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'org.springframework.boot:spring-boot-starter-validation'
+  annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
   implementation 'org.seasar.doma:doma-core:2.50.0'
   implementation 'org.seasar.doma.boot:doma-spring-boot-starter:1.5.0'
@@ -41,9 +42,9 @@ dependencies {
 
   implementation 'org.springdoc:springdoc-openapi-ui:1.5.12'
 
-  implementation "org.mapstruct:mapstruct:1.4.2.Final"
+  implementation 'org.mapstruct:mapstruct:1.4.2.Final'
   implementation 'org.mapstruct.extensions.spring:mapstruct-spring-annotations:0.1.0'
-  annotationProcessor "org.mapstruct:mapstruct-processor:1.4.2.Final"
+  annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
   annotationProcessor 'org.mapstruct.extensions.spring:mapstruct-spring-extensions:0.1.0'
 
   implementation 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
@@ -55,4 +56,12 @@ dependencies {
 
 test {
   useJUnitPlatform()
+}
+
+bootJar {
+  duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
+jar {
+  enabled = false
 }

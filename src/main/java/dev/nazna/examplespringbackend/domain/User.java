@@ -3,6 +3,7 @@ package dev.nazna.examplespringbackend.domain;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -11,8 +12,8 @@ public class User {
 
   private Long id;
   private String name;
-  private Date createdAt;
-  private Date updatedAt;
-  private Date deletedAt;
+  private LocalDateTime createdAt;
+  private LocalDateTime updatedAt;
+  private LocalDateTime deletedAt;
 
 }

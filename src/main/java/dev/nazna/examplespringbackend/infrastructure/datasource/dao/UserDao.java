@@ -8,7 +8,6 @@ import org.seasar.doma.boot.ConfigAutowireable;
 import org.seasar.doma.jdbc.Result;
 import org.springframework.lang.NonNull;
 
-
 @ConfigAutowireable
 @Dao
 public interface UserDao {
