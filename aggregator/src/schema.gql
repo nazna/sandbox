@@ -1,0 +1,20 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Comment {
+  body: String!
+  id: ID!
+  user: User
+}
+
+type Query {
+  comment(id: String!): Comment!
+  user(id: String!): User!
+}
+
+type User {
+  comments: [Comment!]
+  id: ID!
+  name: String!
+}
