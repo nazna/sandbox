@@ -1,0 +1,9 @@
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 10s
+
+server:
+  shutdown: graceful
+
+logging:
+  level: debug
