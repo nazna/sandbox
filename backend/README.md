@@ -1,3 +1,3 @@
 # backend
 
-> Backend of example monorepo appliaction
+> Backend of example monorepo application

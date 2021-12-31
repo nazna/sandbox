@@ -1,3 +1,3 @@
 # aggregator
 
-> Aggregator (BFF) of example monorepo appliaction
+> Aggregator (BFF) of example monorepo application

@@ -1,3 +1,3 @@
 # frontend
 
-> Frontend of example monorepo appliaction
+> Frontend of example monorepo application
