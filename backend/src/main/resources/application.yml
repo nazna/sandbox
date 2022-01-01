@@ -4,6 +4,3 @@ spring:
 
 server:
   shutdown: graceful
-
-logging:
-  level: debug
