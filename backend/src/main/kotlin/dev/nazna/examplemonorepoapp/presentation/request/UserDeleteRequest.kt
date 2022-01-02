@@ -1,4 +1,3 @@
 package dev.nazna.examplemonorepoapp.presentation.request
 
-class UserFindRequest {
-}
+data class UserDeleteRequest(val id: String)
