@@ -1,7 +1,9 @@
-package dev.nazna.examplemonorepoapp.application
+package dev.nazna.examplemonorepoapp.domain.repository
 
 import dev.nazna.examplemonorepoapp.domain.model.User
 
-interface UserService {
+interface UserRepository {
+
   fun findById(id: Long): User
+
 }
