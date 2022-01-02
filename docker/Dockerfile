@@ -1,0 +1,5 @@
+FROM mysql:8.0.27
+
+ENV MYSQL_DATABSE ema
+ENV MYSQL_USER user
+ENV MYSQL_PASSWORD password
