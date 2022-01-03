@@ -4,7 +4,7 @@ import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.javatime.datetime
 
 object UserTable: Table("user") {
-  val userId = long("user_id")
+  val userId = long("user_id").autoIncrement()
   val name = varchar("name", 16)
   val createdAt = datetime("created_at")
   val updatedAt = datetime("updated_at")

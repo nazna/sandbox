@@ -10,11 +10,10 @@ import org.springframework.stereotype.Repository
 @Repository
 class UserRepositoryImpl : UserRepository {
 
-  override fun findById(id: Long): User {
+  override fun findById(id: Long): User? {
     return UserTable
       .select { UserTable.userId eq id }
-      .first()
-      .toUser()
+      .firstOrNull()?.toUser()
   }
 
   private fun ResultRow.toUser(): User {
