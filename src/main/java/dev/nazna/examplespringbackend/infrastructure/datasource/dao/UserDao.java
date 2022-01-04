@@ -8,12 +8,14 @@ import org.seasar.doma.boot.ConfigAutowireable;
 import org.seasar.doma.jdbc.Result;
 import org.springframework.lang.NonNull;
 
+import java.util.Optional;
+
 @ConfigAutowireable
 @Dao
 public interface UserDao {
 
   @Select
-  UserEntity selectByUserId(@NonNull Long userId);
+  Optional<UserEntity> selectByUserId(@NonNull Long userId);
 
   @Insert(include = "name")
   Result<UserEntity> insert(@NonNull UserEntity userEntity);

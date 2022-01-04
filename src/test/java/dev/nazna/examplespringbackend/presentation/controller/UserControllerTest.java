@@ -3,6 +3,7 @@ package dev.nazna.examplespringbackend.presentation.controller;
 import dev.nazna.examplespringbackend.application.UserService;
 import dev.nazna.examplespringbackend.domain.User;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -35,20 +36,23 @@ public class UserControllerTest {
     this.mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
   }
 
-  @Test
-  public void find_ok() throws Exception {
-    // arrange
-    Long id = 1L;
-    LocalDateTime now = LocalDateTime.now();
+  @Nested
+  class Find {
+    @Test
+    public void ok() throws Exception {
+      // arrange
+      Long id = 1L;
+      LocalDateTime now = LocalDateTime.now();
 
-    User expected = new User().setId(id).setName("foo").setCreatedAt(now).setUpdatedAt(now);
-    doReturn(expected).when(userService).find(anyLong());
-    
-    // act
-    MvcResult result = mockMvc.perform(get("/api/v1/users/" + id)).andExpect(status().isOk()).andReturn();
+      User expected = new User().setId(id).setName("foo").setCreatedAt(now).setUpdatedAt(now);
+      doReturn(expected).when(userService).find(anyLong());
 
-    // assert
-    assertThat(result).isNotNull();
+      // act
+      MvcResult result = mockMvc.perform(get("/api/v1/users/" + id)).andExpect(status().isOk()).andReturn();
+
+      // assert
+      assertThat(result).isNotNull();
+    }
   }
 
 }
