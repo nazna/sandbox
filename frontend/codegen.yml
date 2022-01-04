@@ -14,5 +14,5 @@ generates:
       documentVariableSuffix: ''
     plugins:
       - typescript
-      - typescript-urql
       - typescript-operations
+      - typescript-urql
