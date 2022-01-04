@@ -1,0 +1,18 @@
+schema: ../aggregator/src/schema.graphql
+documents: src/**/*.graphql
+generates:
+  src/@types/schema.d.ts:
+    config:
+      # typescript
+      avoidOptionals: true
+      disableDescriptions: true
+      immutableTypes: true
+      noExport: true
+      # typescript-urql
+      withHooks: true
+      gqlImport: urql#gql
+      documentVariableSuffix: ''
+    plugins:
+      - typescript
+      - typescript-urql
+      - typescript-operations
