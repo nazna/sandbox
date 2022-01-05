@@ -32,6 +32,8 @@ dependencies {
   implementation("mysql:mysql-connector-java:8.0.27")
   implementation("org.jetbrains.exposed:exposed-spring-boot-starter:0.37.3")
   implementation("org.jetbrains.exposed:exposed-java-time:0.37.3")
+
+  implementation("dev.akkinoc.spring.boot:logback-access-spring-boot-starter:3.2.0")
 }
 
 tasks.withType<KotlinCompile> {

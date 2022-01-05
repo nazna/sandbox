@@ -23,3 +23,8 @@
 ```shell
 $ curl -X POST -H 'Content-Type: application/json' -sS http://localhost:8082/api/v1/users --data '{}'
 ```
+
+## 参考
+
+- [Spring Bootで組み込みTomcatのアクセスログを標準出力に出力する](https://qiita.com/mito1213/items/0d9394d75dbd5642f37d)
+  - 動作確認のためアクセスログを表示するために導入
