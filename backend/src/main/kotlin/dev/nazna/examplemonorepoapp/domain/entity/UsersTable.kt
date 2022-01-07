@@ -3,7 +3,7 @@ package dev.nazna.examplemonorepoapp.domain.entity
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.javatime.datetime
 
-object UserTable: Table("user") {
+object UsersTable: Table("users") {
   val userId = long("user_id").autoIncrement()
   val name = varchar("name", 16)
   val createdAt = datetime("created_at")
