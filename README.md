@@ -9,6 +9,15 @@
 - [ ] Aggregator/Backend での Versioning を導入する
 - [ ] [GraphQL Inspector](https://github.com/kamilkisiela/graphql-inspector) を GitHub Actions で導入する
 
+## 実行環境
+
+| component  | local          | container      |
+|------------|----------------|----------------|
+| database   | N/A            | 127.0.0.1:3306 |
+| aggregator | localhost:8000 | localhost:3000 |
+| frontend   | localhost:8010 | localhost:3010 |
+| backend    | localhost:8020 | localhost:3020 |
+
 ## コンテナ実行
 
 イメージをビルドする
@@ -28,7 +37,7 @@ $ docker network create example-monorepo-app-network
 
 ```shell
 $ docker container run --name database --publish 3306:3306 --network example-monorepo-app-network --detach --rm example-monorepo-app/database:latest
-$ docker container run --name backend --publish 8082:8082 --network example-monorepo-app-network --detach --rm example-monorepo-app/backend:latest
+$ docker container run --name backend --publish 3020:8020 --network example-monorepo-app-network --detach --rm example-monorepo-app/backend:latest
 ```
 
 不要なイメージやコンテナを削除する
