@@ -7,6 +7,6 @@ data class User(
   val name: String,
   val createdAt: LocalDateTime,
   val updatedAt: LocalDateTime,
-  val deletedAt: LocalDateTime,
-  val deletedReason: String
+  val deletedAt: LocalDateTime?,
+  val deletedReason: String?
 )

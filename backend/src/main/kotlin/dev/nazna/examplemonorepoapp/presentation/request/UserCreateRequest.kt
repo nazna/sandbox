@@ -1,3 +1,6 @@
 package dev.nazna.examplemonorepoapp.presentation.request
 
-data class UserCreateRequest(val id: String, val name: String)
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class UserCreateRequest(val name: String)

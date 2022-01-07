@@ -5,7 +5,6 @@ import dev.nazna.examplemonorepoapp.domain.model.User
 import dev.nazna.examplemonorepoapp.presentation.request.UserCreateRequest
 import dev.nazna.examplemonorepoapp.presentation.request.UserSearchRequest
 import org.springframework.http.ResponseEntity
-import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/api/v1/users")
-@Validated
 class UserController(private val userService: UserService) {
 
   @GetMapping("/{id}")
@@ -31,8 +29,8 @@ class UserController(private val userService: UserService) {
   }
 
   @PostMapping
-  fun create(@RequestBody request: UserCreateRequest): ResponseEntity<String> {
-    return ResponseEntity.ok().body("Created")
+  fun create(@RequestBody request: UserCreateRequest): ResponseEntity<User> {
+    return ResponseEntity.ok().body(userService.create(request))
   }
 
   @DeleteMapping("/{id}")

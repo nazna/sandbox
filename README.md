@@ -18,6 +18,11 @@
 | frontend   | localhost:8010 | localhost:3010 |
 | backend    | localhost:8020 | localhost:3020 |
 
+## 設計
+
+- サーバーサイドでは時刻は UTC で扱う
+  - ただしログは Asia/Tokyo で出力する
+
 ## コンテナ実行
 
 イメージをビルドする
