@@ -4,10 +4,13 @@
 
 ## Todos
 
+- [ ] docker-compose を利用するように環境を変更する
 - [ ] Bazel を導入する
 - [ ] ポート番号など共通で管理すべき config をまとめる
 - [ ] Aggregator/Backend での Versioning を導入する
 - [ ] [GraphQL Inspector](https://github.com/kamilkisiela/graphql-inspector) を GitHub Actions で導入する
+- [ ] ヘルスチェック用のエンドポイントを各コンポーネントに作成する
+- [ ] 分散トレーシングに対応する
 
 ## 実行環境
 
@@ -22,6 +25,8 @@
 
 - サーバーサイドでは時刻は UTC で扱う
   - ただしログは Asia/Tokyo で出力する
+- 簡単のためパスワード等の秘匿すべき情報をソースコードに直接記載する
+  - Docker イメージにも焼かれる
 
 ## コンテナ実行
 

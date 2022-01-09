@@ -27,7 +27,7 @@ class UserController(private val userService: UserService) {
 
   @GetMapping("/{id}")
   fun find(@PathVariable id: Long): ResponseEntity<User> {
-    logger.debug("GET /api/v1/users/${id}")
+    logger.info("GET /api/v1/users/${id}")
     return ResponseEntity.ok().body(userService.findById(id))
   }
 
@@ -38,7 +38,8 @@ class UserController(private val userService: UserService) {
 
   @PostMapping
   fun create(@Validated @RequestBody request: UserCreateRequest): ResponseEntity<User> {
-    logger.debug("POST /api/v1/users request=${request}")
+    logger.info("POST /api/v1/users request=${request}")
+    // TODO: Response with status code 201 Created
     return ResponseEntity.ok().body(userService.create(request))
   }
 
