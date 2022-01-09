@@ -15,7 +15,7 @@ async function bootstrap() {
   // await app.register(fastifyCsrf)
 
   await app.listen(port, async () => {
-    Logger.debug(`Server is running on ${await app.getUrl()}/graphql`)
+    Logger.debug(`Server is running on ${await app.getUrl()}/api/v1/graphql`)
   })
 }
 
