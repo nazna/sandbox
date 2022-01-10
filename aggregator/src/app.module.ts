@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common'
-import { CommentModule, GraphQLModule, UserModule } from './module'
+import { CommentModule, GraphQLModule, NodeModule, UserModule } from './module'
 
 @Module({
-  imports: [GraphQLModule, UserModule, CommentModule],
+  imports: [GraphQLModule, NodeModule, UserModule, CommentModule],
 })
 export class AppModule {}

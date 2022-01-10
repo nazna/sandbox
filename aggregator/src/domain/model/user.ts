@@ -1,7 +1,9 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql'
-import { Comment } from '.'
+import { Comment, Node } from '.'
 
-@ObjectType()
+@ObjectType({
+  implements: () => [Node],
+})
 export class User {
   @Field(() => ID)
   readonly id: string
