@@ -6,6 +6,8 @@
 
 - [ ] docker-compose を利用するように環境を変更する
 - [ ] Bazel を導入する
+  - [ ] [Bazel の解説（TS, Docker イメージ、リモートキャッシュ）](https://zenn.dev/kesin11/books/c86010deb5b8008f394f)
+  - [ ] [jin/awesome-bazel](https://github.com/jin/awesome-bazel)
 - [ ] ポート番号など共通で管理すべき config をまとめる
 - [ ] Aggregator/Backend での Versioning を導入する
 - [ ] [GraphQL Inspector](https://github.com/kamilkisiela/graphql-inspector) を GitHub Actions で導入する
