@@ -1,0 +1,20 @@
+[package]
+name = "example-axum"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+axum = "0.4.5"
+anyhow = "1.0.53"
+
+tokio = { version = "1.14.1", features = ["full"] }
+sqlx = { version = "0.5.10", features = [ "runtime-tokio-rustls", "macros", "sqlite" ] }
+
+dotenv = "0.15.0"
+ulid = "0.5.0"
+chrono = "0.4.19"
+serde = { version = "1.0.136", features = ["derive"] }
+
+tracing = "0.1.30"
+tracing-subscriber = { version="0.3.8", features = ["env-filter"] }
