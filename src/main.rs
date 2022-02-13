@@ -14,7 +14,7 @@ async fn main() -> anyhow::Result<()> {
     let pool = SqlitePoolOptions::new()
         .max_connections(1)
         .connect_timeout(Duration::from_secs(1))
-        .connect(&std::env::var("DATABASE_URL").unwrap())
+        .connect(&std::env::var("DATABASE_URL")?)
         .await?;
 
     let app = Router::new()

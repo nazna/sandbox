@@ -10,6 +10,12 @@
 sqlite3 sandbox.sqlite3 < ./database/ddl.sql
 ```
 
+Rust/Cargo 使い方
+
+- フォーマット: `cargo fmt`
+- ビルド: `cargo build`
+- 実行: `cargo run`
+
 ## Example usage
 
 ユーザー単体取得
