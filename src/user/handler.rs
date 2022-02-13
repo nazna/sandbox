@@ -7,7 +7,7 @@ use crate::user::model::User;
 use super::model::CreateUser;
 
 pub async fn all(Extension(pool): Extension<SqlitePool>) -> impl IntoResponse {
-    let users = query_file_as!(User, "database/queries/select-all-users.sql")
+    let users = query_file_as!(User, "database/queries/user/select-all.sql")
         .fetch_all(&pool)
         .await
         .unwrap();
@@ -25,12 +25,12 @@ pub async fn create(
 ) -> impl IntoResponse {
     let id = Ulid::new().to_string();
 
-    let result = query_file!("database/queries/insert-user.sql", id, input.nickname)
+    let result = query_file!("database/queries/user/insert.sql", id, input.nickname)
         .execute(&pool)
         .await;
     println!("{:?}", result);
 
-    let user = query_file_as!(User, "database/queries/select-user-by-id.sql", id)
+    let user = query_file_as!(User, "database/queries/user/select-by-id.sql", id)
         .fetch_one(&pool)
         .await
         .unwrap();
