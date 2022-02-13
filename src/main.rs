@@ -41,7 +41,7 @@ async fn main() -> anyhow::Result<()> {
         .layer(AddExtensionLayer::new(pool));
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
-    tracing::debug!("Server is running on {}", addr);
+    tracing::info!("Server is running on {}", addr);
 
     axum::Server::bind(&addr)
         .serve(app.into_make_service())

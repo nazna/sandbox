@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use validator::Validate;
 
 #[derive(Debug, Serialize)]
 pub struct User {
@@ -10,7 +11,8 @@ pub struct User {
     pub deleted_reason: Option<String>,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Validate)]
 pub struct CreateUser {
+    #[validate(length(max = 32))]
     pub nickname: String,
 }
