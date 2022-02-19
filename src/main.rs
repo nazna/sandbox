@@ -1,14 +1,20 @@
+mod errors;
 mod task;
 mod user;
 
+use anyhow::Error;
 use axum::{routing::get, AddExtensionLayer, Router};
 use dotenv::dotenv;
 use sqlx::sqlite::SqlitePoolOptions;
 use std::{net::SocketAddr, time::Duration};
 
 #[tokio::main]
-async fn main() -> anyhow::Result<()> {
+async fn main() -> Result<(), Error> {
     dotenv().ok();
+
+    if std::env::var_os("RUST_LOG").is_none() {
+        std::env::set_var("RUST_LOG", "example_axum=debug")
+    }
     tracing_subscriber::fmt::init();
 
     let pool = SqlitePoolOptions::new()

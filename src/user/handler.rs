@@ -3,9 +3,8 @@ use sqlx::{query_file, query_file_as, SqlitePool};
 use ulid::Ulid;
 use validator::Validate;
 
-use crate::user::model::User;
-
-use super::model::CreateUser;
+use crate::errors::api::ApiError;
+use crate::user::model::{CreateUser, User};
 
 pub async fn all(Extension(pool): Extension<SqlitePool>) -> impl IntoResponse {
     let users = query_file_as!(User, "database/queries/user/select-all.sql")
@@ -16,17 +15,18 @@ pub async fn all(Extension(pool): Extension<SqlitePool>) -> impl IntoResponse {
     (StatusCode::OK, Json(users))
 }
 
-pub async fn find() {
-    todo!("ユーザー単体取得API 実装予定");
+pub async fn find(Extension(pool): Extension<SqlitePool>) -> Result<(), ApiError> {
+    Err(ApiError::NotFound)
 }
 
 pub async fn create(
     Extension(pool): Extension<SqlitePool>,
     Json(input): Json<CreateUser>,
-) -> Result<impl IntoResponse, StatusCode> {
+) -> Result<impl IntoResponse, ApiError> {
     if input.validate().is_err() {
-        tracing::warn!("入力が不正です");
-        return Err(StatusCode::BAD_REQUEST);
+        // TODO: ログ出力をマスクする
+        tracing::warn!("入力が不正です input={:?}", input);
+        return Err(ApiError::BadRequest);
     }
 
     let id = Ulid::new().to_string();
