@@ -11,10 +11,6 @@ use std::{net::SocketAddr, time::Duration};
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     dotenv().ok();
-
-    if std::env::var_os("RUST_LOG").is_none() {
-        std::env::set_var("RUST_LOG", "example_axum=debug")
-    }
     tracing_subscriber::fmt::init();
 
     let pool = SqlitePoolOptions::new()
