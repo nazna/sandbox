@@ -1,1 +1,4 @@
-INSERT INTO users(id, nickname) VALUES(?, ?);
+INSERT INTO
+  users(id, nickname)
+VALUES
+  (?, ?);

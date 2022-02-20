@@ -2,14 +2,13 @@ mod errors;
 mod task;
 mod user;
 
-use anyhow::Error;
 use axum::{routing::get, AddExtensionLayer, Router};
 use dotenv::dotenv;
 use sqlx::sqlite::SqlitePoolOptions;
 use std::{net::SocketAddr, time::Duration};
 
 #[tokio::main]
-async fn main() -> Result<(), Error> {
+async fn main() -> Result<(), anyhow::Error> {
     dotenv().ok();
     tracing_subscriber::fmt::init();
 

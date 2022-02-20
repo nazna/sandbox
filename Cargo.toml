@@ -8,7 +8,7 @@ publish = false
 axum = "0.4.5"
 tokio = { version = "1.14.1", features = ["full"] }
 
-sqlx = { version = "0.5.10", features = [ "runtime-tokio-rustls", "macros", "sqlite" ] }
+sqlx = { version = "0.5.10", features = [ "runtime-tokio-rustls", "macros", "sqlite", "chrono" ] }
 
 anyhow = "1.0.53"
 serde = { version = "1.0.136", features = ["derive"] }
@@ -16,7 +16,7 @@ validator = { version = "0.14.0", features = ["derive"] }
 
 dotenv = "0.15.0"
 ulid = "0.5.0"
-chrono = "0.4.19"
+chrono = { version = "0.4.19", features = ["serde"] }
 
 tracing = "0.1.30"
 tracing-subscriber = { version="0.3.8", features = ["env-filter"] }

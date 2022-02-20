@@ -7,7 +7,7 @@
 データベース作成
 
 ```shell
-sqlite3 sandbox.sqlite3 < ./database/ddl.sql
+sqlite3 ./database/sandbox.sqlite3 < ./database/ddl.sql
 ```
 
 Rust/Cargo 使い方
@@ -18,38 +18,52 @@ Rust/Cargo 使い方
 
 ## Example usage
 
-ユーザー単体取得
+ユーザー全取得 200 OK
 
 ```shell
 curl -X GET -H 'Content-Type: application/json' -sS localhost:3000/api/v1/users | jq
 ```
 
-ユーザー作成
+ユーザー単体取得 200 OK
+
+```shell
+curl -X GET -H 'Content-Type: application/json' -sS localhost:3000/api/v1/users/01FWB8FXR9DDVVARBT0K3E8X85 | jq
+```
+
+ユーザー単体取得 404 Not Found
+
+```shell
+curl -X GET -H 'Content-Type: application/json' -sS localhost:3000/api/v1/users/01FVPK6ZJ3S5BP4XHTBYE1F5D1 | jq
+```
+
+ユーザー作成 201 Created
 
 ```shell
 curl -X POST -H 'Content-Type: application/json' -sS localhost:3000/api/v1/users -d '{"nickname": "Alice"}' | jq
 ```
 
+ユーザー作成 400 Bad Request
+
 ```shell
 curl -X POST -H 'Content-Type: application/json' -sS localhost:3000/api/v1/users -d '{"nickname": "abcdefghijklmnopqrstuvwxyzabcdefg"}' | jq
 ```
 
-ユーザー編集
+ユーザー編集 200 OK
 
 ```shell
-curl -X PUT -H 'Content-Type: application/json' -sS localhost:3000/api/v1/users -d '{"id": "01FVPK6ZJ3S5BP4XHTBYE1F5D1", "nickname": "Alma"}' | jq
+curl -X PUT -H 'Content-Type: application/json' -sS localhost:3000/api/v1/users/01FWB8FXR9DDVVARBT0K3E8X85 -d '{"nickname": "Alma"}' | jq
 ```
 
-ユーザー削除
+ユーザー削除 200 OK
 
 ```shell
-curl -X GET -H 'Content-Type: application/json' -sS localhost:3000/api/v1/tasks | jq
+curl -X DELETE -H 'Content-Type: application/json' -sS localhost:3000/api/v1/users/01FWB8FXR9DDVVARBT0K3E8X85 -d '{"deleteReason": "ユーザー自身による削除"}' | jq
 ```
 
-タスク作成
+タスク作成 201 Created
 
 ```shell
-curl -X POST -H 'Content-Type: application/json' -sS localhost:3000/api/v1/tasks -d '{"body": "Alice", "user_id": "01FVPK6ZJ3S5BP4XHTBYE1F5D1"}' | jq
+curl -X POST -H 'Content-Type: application/json' -sS localhost:3000/api/v1/tasks -d '{"body": "Buy a coffee", "user_id": "01FWB8FXR9DDVVARBT0K3E8X85"}' | jq
 ```
 
 ## References

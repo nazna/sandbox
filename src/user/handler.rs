@@ -1,3 +1,4 @@
+use axum::extract::Path;
 use axum::{extract::Extension, http::StatusCode, response::IntoResponse, Json};
 use sqlx::{query_file, query_file_as, SqlitePool};
 use ulid::Ulid;
@@ -15,8 +16,16 @@ pub async fn all(Extension(pool): Extension<SqlitePool>) -> impl IntoResponse {
     (StatusCode::OK, Json(users))
 }
 
-pub async fn find(Extension(pool): Extension<SqlitePool>) -> Result<(), ApiError> {
-    Err(ApiError::NotFound)
+pub async fn find(
+    Extension(pool): Extension<SqlitePool>,
+    Path(id): Path<String>,
+) -> Result<impl IntoResponse, ApiError> {
+    let user = query_file_as!(User, "database/queries/user/select-by-id.sql", id)
+        .fetch_one(&pool)
+        .await
+        .map_err(|_error| ApiError::NotFound)?;
+
+    Ok((StatusCode::OK, Json(user)))
 }
 
 pub async fn create(

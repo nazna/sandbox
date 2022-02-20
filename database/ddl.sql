@@ -20,12 +20,12 @@ CREATE TABLE IF NOT EXISTS tasks (
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE TRIGGER trigger_users_updated_at AFTER UPDATE ON users
+CREATE TRIGGER IF NOT EXISTS trigger_users_updated_at AFTER UPDATE ON users
 BEGIN
   UPDATE users SET updated_at = CURRENT_TIMESTAMP WHERE rowid = new.rowid;
 END;
 
-CREATE TRIGGER trigger_tasks_updated_at AFTER UPDATE ON tasks
+CREATE TRIGGER IF NOT EXISTS trigger_tasks_updated_at AFTER UPDATE ON tasks
 BEGIN
   UPDATE tasks SET updated_at = CURRENT_TIMESTAMP WHERE rowid = new.rowid;
 END;
