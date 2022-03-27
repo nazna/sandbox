@@ -1,12 +1,15 @@
 package usecase
 
-import "example-golang-echo/src/domain/model"
+import (
+	"example-golang-echo/src/domain/model"
+	"example-golang-echo/src/domain/request"
+)
 
-func UserCreate(id string) *model.User {
+func UserCreate(input *request.UserCreateRequest) (*model.User, error) {
 	user := &model.User{
-		Id:   "1",
-		Name: "Alma",
+		Id:   "10",
+		Name: input.Name,
 	}
 
-	return user
+	return user, nil
 }

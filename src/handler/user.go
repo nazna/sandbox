@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"example-golang-echo/src/domain/request"
 	"example-golang-echo/src/usecase"
 
 	"net/http"
@@ -10,9 +11,28 @@ import (
 
 func UserFind(c echo.Context) error {
 	id := c.Param("id")
-	return c.JSON(http.StatusOK, usecase.UserFind(id))
+
+	user, err := usecase.UserFind(id)
+
+	if err != nil {
+		return err
+	}
+
+	return c.JSON(http.StatusOK, user)
 }
 
 func UserCreate(c echo.Context) error {
-	return c.JSON(http.StatusCreated, usecase.UserCreate("1"))
+	input := new(request.UserCreateRequest)
+
+	if err := c.Bind(input); err != nil {
+		return err
+	}
+
+	user, err := usecase.UserCreate(input)
+
+	if err != nil {
+		return err
+	}
+
+	return c.JSON(http.StatusCreated, user)
 }

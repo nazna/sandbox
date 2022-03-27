@@ -1,0 +1,15 @@
+services:
+  database:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_INITDB_ARGS: --encoding=UTF-8 --locale=C
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+      - ./database/ddl:/docker-entrypoint-initdb.d
+    ports:
+      - 15432:5432
+volumes:
+  postgres-data:
+    external: true
