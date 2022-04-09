@@ -1,0 +1,40 @@
+{
+  "name": "example-nestjs-esbuild",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Example NestJS application built by esbuild",
+  "license": "MIT",
+  "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
+  "scripts": {
+    "dev": "",
+    "build": "",
+    "test": "",
+    "coverage": "",
+    "lint": "npm run typecheck && npm run eslint && npm run prettier",
+    "typecheck": "tsc --noEmit",
+    "eslint": "eslint --ignore-path .gitignore --fix .",
+    "prettier": "prettier --ignore-path .gitignore --write ."
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "prettier"
+    ]
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true
+  },
+  "devDependencies": {
+    "@web/dev-server-esbuild": "0.3.0",
+    "esbuild": "0.14.34"
+  },
+  "engines": {
+    "node": "17.x",
+    "npm": "8.x"
+  }
+}
