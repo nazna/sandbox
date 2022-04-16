@@ -1,19 +1,45 @@
 {
   "name": "example-nestjs-esbuild",
-  "version": "0.0.1",
   "private": true,
+  "type": "module",
+  "version": "0.0.1",
   "description": "Example NestJS application built by esbuild",
   "license": "MIT",
   "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
   "scripts": {
-    "dev": "",
-    "build": "",
-    "test": "",
-    "coverage": "",
+    "dev": "node scripts/runner.js",
+    "build": "node scripts/builder.js",
+    "start": "node dist/main.csj",
+    "test": "npm run typecheck && jest",
+    "coverage": "npm run typecheck && jest --coverage",
     "lint": "npm run typecheck && npm run eslint && npm run prettier",
     "typecheck": "tsc --noEmit",
     "eslint": "eslint --ignore-path .gitignore --fix .",
     "prettier": "prettier --ignore-path .gitignore --write ."
+  },
+  "dependencies": {
+    "@nestjs/apollo": "10.0.9",
+    "@nestjs/common": "8.4.4",
+    "@nestjs/core": "8.4.4",
+    "@nestjs/graphql": "10.0.9",
+    "@nestjs/platform-express": "8.4.4",
+    "@types/node": "17.0.24",
+    "apollo-server-express": "3.6.7",
+    "graphql": "16.3.0"
+  },
+  "devDependencies": {
+    "@anatine/esbuild-decorators": "0.2.19",
+    "@typescript-eslint/eslint-plugin": "5.18.0",
+    "@typescript-eslint/parser": "5.18.0",
+    "esbuild": "0.14.34",
+    "eslint": "8.13.0",
+    "eslint-config-prettier": "8.5.0",
+    "prettier": "2.6.2",
+    "typescript": "4.6.3"
+  },
+  "engines": {
+    "node": "17.x",
+    "npm": "8.x"
   },
   "eslintConfig": {
     "root": true,
@@ -28,13 +54,5 @@
     "printWidth": 120,
     "semi": false,
     "singleQuote": true
-  },
-  "devDependencies": {
-    "@web/dev-server-esbuild": "0.3.0",
-    "esbuild": "0.14.34"
-  },
-  "engines": {
-    "node": "17.x",
-    "npm": "8.x"
   }
 }
