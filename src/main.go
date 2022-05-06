@@ -12,7 +12,7 @@ func main() {
 
 	e.HideBanner = true
 	e.HidePort = true
-	// e.HTTPErrorHandler = handler.ApiError
+	e.HTTPErrorHandler = handler.ErrorResponder
 
 	e.Pre(middleware.RemoveTrailingSlash())
 	e.Use(middleware.Logger())

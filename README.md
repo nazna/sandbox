@@ -1,6 +1,6 @@
 # example-golang-echo
 
-> Example golang application with Echo, sqlc and zerolog
+> [WIP] Example golang application with Echo, sqlc and zerolog
 
 ## Environment
 
@@ -61,3 +61,5 @@ CREATE OR REPLACE TRIGGER trigger_users_updated_at BEFORE UPDATE
 - [mori-dev/app_error.go](https://gist.github.com/mori-dev/0ae89dc0918d2b1c644d34dbee29b408)
 - [Go言語 - enumを定義する](https://blog.y-yuki.net/entry/2017/05/09/000000)
 - [goで文字列ベースのenumの定義はこんな感じが良いかもしれない](https://pod.hatenablog.com/entry/2020/05/02/030634)
+- [echo用にzerologのラッパーzeroechoをつくった](https://johnmanjiro13.hatenablog.com/entry/zeroecho)
+- [faabiosr/echo-middleware/zerolog.go](https://github.com/faabiosr/echo-middleware/blob/master/zerolog.go)
