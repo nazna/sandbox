@@ -1,0 +1,16 @@
+type Mutation {
+  """
+  Sign-in
+  """
+  signin(input: SigninInput!): SigninPayload
+
+  """
+  Sign-out
+  """
+  signout(input: SignoutInput!): SignoutPayload
+
+  """
+  Sign-up
+  """
+  signup(input: SignupInput!): SignupPayload
+}

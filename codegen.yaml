@@ -1,0 +1,23 @@
+overwrite: true
+schema: './src/schema/*.graphql'
+generates:
+  ./src/types.ts:
+    plugins:
+      - add:
+          content: '/* eslint-disable */'
+      - 'typescript'
+      - 'typescript-resolvers'
+    config:
+      avoidOptionals:
+        field: true
+        object: true
+        inputValue: false
+        defaultValue: false
+      enumsAsConst: true
+      immutableTypes: true
+      defaultScalarType: unknown
+      skipTypename: true
+      useTypeImports: true
+hooks:
+  afterAllFileWrite:
+    - prettier --write

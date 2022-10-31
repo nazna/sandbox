@@ -1,0 +1,13 @@
+type SigninPayload {
+  token: String!
+  viewer: User
+}
+
+type SignoutPayload {
+  message: String
+}
+
+type SignupPayload {
+  token: String!
+  viewer: User
+}
