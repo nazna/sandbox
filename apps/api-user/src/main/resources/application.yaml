@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: api-user
+  main:
+    banner-mode: off
+  messages:
+    encoding: UTF-8
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: p@ssw0rd
+springdoc:
+  swagger-ui:
+    path: /docs
+logging:
+  level:
+    dev.nazna.api.user: debug

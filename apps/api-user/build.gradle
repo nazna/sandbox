@@ -1,37 +1,60 @@
 plugins {
-    id 'org.springframework.boot' version '2.7.4'
-    id 'io.spring.dependency-management' version '1.0.14.RELEASE'
-    id 'java'
-    id "application"
+  id 'org.springframework.boot' version '2.7.4'
+  id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+  id 'java'
+  id "application"
 }
 
 group = 'dev.nazna'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
 
 application {
-    mainClass = "dev.nazna.api.user.ApiUserApplication"
+  mainClass = "dev.nazna.api.user.ApiUserApplication"
+}
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(17)
+  }
 }
 
 configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
+  compileOnly {
+    extendsFrom annotationProcessor
+  }
 }
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'io.projectreactor:reactor-test'
+  implementation 'org.springframework.boot:spring-boot-starter-webflux'
+  implementation 'org.springframework.boot:spring-boot-starter-validation'
+  implementation 'org.springframework.boot:spring-boot-starter-data-r2dbc'
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+  runtimeOnly 'org.postgresql:postgresql'
+  runtimeOnly 'org.postgresql:r2dbc-postgresql'
+
+  testImplementation 'io.projectreactor:reactor-test'
+
+  implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.6.12'
 }
 
 tasks.named('test') {
-    useJUnitPlatform()
+  useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+  options.compilerArgs += "--enable-preview"
+}
+
+tasks.withType(Test) {
+  jvmArgs += "--enable-preview"
+}
+
+tasks.withType(JavaExec) {
+  jvmArgs += "--enable-preview"
 }
