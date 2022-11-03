@@ -1,10 +1,12 @@
 package dev.nazna.api.user.domain.dto;
 
 import dev.nazna.api.user.domain.exception.BadRequestException;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import static java.util.Objects.isNull;
 
-public record UserCreateRequest(String name) {
+@Schema(description = "ユーザー作成リクエスト")
+public record UserCreateRequest(@Schema(description = "ユーザー名", example = "alma") String name) {
 
   public UserCreateRequest {
     this.validate(name);
