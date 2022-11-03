@@ -5,8 +5,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import static java.util.Objects.isNull;
 
-@Schema(description = "ユーザー作成リクエスト")
-public record UserCreateRequest(@Schema(description = "ユーザー名", example = "alma") String name) {
+@Schema(description = "ユーザー単体作成リクエスト")
+public record UserCreateRequest(@Schema(description = "ユーザー名", required = true, example = "alma") String name) {
 
   public UserCreateRequest {
     this.validate(name);

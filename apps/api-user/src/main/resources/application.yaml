@@ -1,3 +1,5 @@
+server:
+  port: 8080
 spring:
   application:
     name: api-user
@@ -10,8 +12,11 @@ spring:
     username: postgres
     password: p@ssw0rd
 springdoc:
-  swagger-ui:
+  api-docs:
     path: /docs
+  swagger-ui:
+    enabled: false
+    disable-swagger-default-url: true
 logging:
   level:
     dev.nazna.api.user: debug

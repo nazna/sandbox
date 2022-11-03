@@ -9,10 +9,14 @@
 
 ## Design
 
+- マイクロサービスっぽくAPIをドメインごとに分割する
 - Lombokを使わない
 - 認証・認可は考えない
 - ReDocでOpenAPIを提供する
 - Spring Webfluxを採用する
+- モデルマッパーは導入しない
+  - どうしても必要なら `org.springframework.core.convert.converter.Converter` を実装する
+- フォーマットにはspotlessを利用する
 
 ## Development
 
@@ -31,7 +35,7 @@ curl -X GET -H 'Content-Type: application.json' -sS http://localhost:8080/api/us
 curl -X POST -H 'Content-Type: application/json' -sS http://localhost:8080/api/users/v1 --data '{"name": "alma"}' | jq
 ```
 
-OpenAPIでAPIのI/Fを確認できます: [ReDoc](http://localhost:8080/docs)
+OpenAPIでAPIのI/Fを確認できます: [ReDoc](http://localhost:8080/redoc.html)
 
 ## Warning
 

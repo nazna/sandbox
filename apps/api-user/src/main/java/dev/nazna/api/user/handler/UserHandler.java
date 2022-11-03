@@ -2,6 +2,7 @@ package dev.nazna.api.user.handler;
 
 import dev.nazna.api.user.domain.dto.UserCreateRequest;
 import dev.nazna.api.user.domain.dto.UserFindRequest;
+import dev.nazna.api.user.domain.model.ErrorResponseBody;
 import dev.nazna.api.user.domain.model.User;
 import dev.nazna.api.user.usecase.UserUsecase;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,7 +32,12 @@ public class UserHandler {
     summary = "ユーザー単体取得",
     description = "ユーザーIDを指定して1人のユーザー情報を取得します",
     parameters = {@Parameter(name = "id", description = "ユーザーID", in = ParameterIn.PATH)},
-    responses = @ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = User.class))))
+    responses = {
+      @ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = User.class))),
+      @ApiResponse(responseCode = "400", content = @Content(schema = @Schema(implementation = ErrorResponseBody.class))),
+      @ApiResponse(responseCode = "404", content = @Content(schema = @Schema(implementation = ErrorResponseBody.class))),
+      @ApiResponse(responseCode = "500", content = @Content(schema = @Schema(implementation = ErrorResponseBody.class)))
+    })
   public Mono<ServerResponse> find(ServerRequest request) {
     var dto = new UserFindRequest(request.pathVariable("id"));
     var user = usecase.find(dto);
@@ -46,7 +52,12 @@ public class UserHandler {
     description = "ユーザー単体作成",
     summary = "ユーザーを1人作成します",
     requestBody = @RequestBody(required = true, content = @Content(schema = @Schema(implementation = UserCreateRequest.class))),
-    responses = @ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = User.class))))
+    responses = {
+      @ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = User.class))),
+      @ApiResponse(responseCode = "400", content = @Content(schema = @Schema(implementation = ErrorResponseBody.class))),
+      @ApiResponse(responseCode = "404", content = @Content(schema = @Schema(implementation = ErrorResponseBody.class))),
+      @ApiResponse(responseCode = "500", content = @Content(schema = @Schema(implementation = ErrorResponseBody.class)))
+    })
   public Mono<ServerResponse> create(ServerRequest request) {
     var dto = request.bodyToMono(UserCreateRequest.class);
     var user = dto.flatMap(usecase::create);
