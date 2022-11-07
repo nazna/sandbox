@@ -1,5 +1,8 @@
 package dev.nazna.api.user.handler;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
 import dev.nazna.api.user.domain.model.User;
 import dev.nazna.api.user.usecase.UserUsecase;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,18 +18,13 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
-
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 public class UserHandlerTest {
 
-  @Autowired
-  RouterFunction<ServerResponse> routerFunction;
+  @Autowired RouterFunction<ServerResponse> routerFunction;
   WebTestClient client;
-  @MockBean
-  private UserUsecase usecase;
+  @MockBean private UserUsecase usecase;
 
   @BeforeEach
   public void setup() {
@@ -39,16 +37,14 @@ public class UserHandlerTest {
     when(usecase.find(any())).thenReturn(Mono.just(new User(1L, "alma")));
 
     // act
-    var actual = client
-      .get()
-      .uri("/api/users/v1/{id}", "1")
-      .accept(MediaType.APPLICATION_JSON)
-      .exchange()
-      .expectStatus();
+    var actual =
+        client
+            .get()
+            .uri("/api/users/v1/{id}", "1")
+            .accept(MediaType.APPLICATION_JSON)
+            .exchange()
+            .expectStatus();
 
-    actual.isOk()
-      .expectBody(User.class)
-      .isEqualTo(new User(1L, "alma"));
+    actual.isOk().expectBody(User.class).isEqualTo(new User(1L, "alma"));
   }
-
 }

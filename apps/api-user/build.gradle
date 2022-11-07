@@ -1,6 +1,7 @@
 plugins {
   id 'org.springframework.boot' version '2.7.4'
   id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+  id "com.diffplug.spotless" version "6.11.0"
   id 'java'
   id "application"
 }
@@ -14,7 +15,7 @@ application {
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(17)
+    languageVersion = JavaLanguageVersion.of(19)
   }
 }
 
@@ -41,6 +42,12 @@ dependencies {
   testImplementation 'io.projectreactor:reactor-test'
 
   implementation 'org.springdoc:springdoc-openapi-webflux-ui:1.6.12'
+}
+
+spotless {
+  java {
+    googleJavaFormat()
+  }
 }
 
 tasks.named('test') {

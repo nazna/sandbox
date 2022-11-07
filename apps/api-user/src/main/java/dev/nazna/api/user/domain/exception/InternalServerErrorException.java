@@ -17,5 +17,4 @@ public class InternalServerErrorException extends ResponseStatusException {
   public String getMessage() {
     return message;
   }
-
 }

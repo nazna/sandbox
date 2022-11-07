@@ -28,43 +28,59 @@ public class UserHandler {
   }
 
   @Operation(
-    operationId = "user-find",
-    summary = "ユーザー単体取得",
-    description = "ユーザーIDを指定して1人のユーザー情報を取得します",
-    parameters = {@Parameter(name = "id", description = "ユーザーID", in = ParameterIn.PATH)},
-    responses = {
-      @ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = User.class))),
-      @ApiResponse(responseCode = "400", content = @Content(schema = @Schema(implementation = ErrorResponseBody.class))),
-      @ApiResponse(responseCode = "404", content = @Content(schema = @Schema(implementation = ErrorResponseBody.class))),
-      @ApiResponse(responseCode = "500", content = @Content(schema = @Schema(implementation = ErrorResponseBody.class)))
-    })
+      operationId = "user-find",
+      summary = "ユーザー単体取得",
+      description = "ユーザーIDを指定して1人のユーザー情報を取得します",
+      parameters = {@Parameter(name = "id", description = "ユーザーID", in = ParameterIn.PATH)},
+      responses = {
+        @ApiResponse(
+            responseCode = "200",
+            content = @Content(schema = @Schema(implementation = User.class))),
+        @ApiResponse(
+            responseCode = "400",
+            content = @Content(schema = @Schema(implementation = ErrorResponseBody.class))),
+        @ApiResponse(
+            responseCode = "404",
+            content = @Content(schema = @Schema(implementation = ErrorResponseBody.class))),
+        @ApiResponse(
+            responseCode = "500",
+            content = @Content(schema = @Schema(implementation = ErrorResponseBody.class)))
+      })
   public Mono<ServerResponse> find(ServerRequest request) {
     var dto = new UserFindRequest(request.pathVariable("id"));
     var user = usecase.find(dto);
 
-    return user.flatMap(u -> ServerResponse.ok()
-      .contentType(MediaType.APPLICATION_JSON)
-      .bodyValue(u));
+    return user.flatMap(
+        u -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValue(u));
   }
 
   @Operation(
-    operationId = "user-create",
-    description = "ユーザー単体作成",
-    summary = "ユーザーを1人作成します",
-    requestBody = @RequestBody(required = true, content = @Content(schema = @Schema(implementation = UserCreateRequest.class))),
-    responses = {
-      @ApiResponse(responseCode = "200", content = @Content(schema = @Schema(implementation = User.class))),
-      @ApiResponse(responseCode = "400", content = @Content(schema = @Schema(implementation = ErrorResponseBody.class))),
-      @ApiResponse(responseCode = "404", content = @Content(schema = @Schema(implementation = ErrorResponseBody.class))),
-      @ApiResponse(responseCode = "500", content = @Content(schema = @Schema(implementation = ErrorResponseBody.class)))
-    })
+      operationId = "user-create",
+      description = "ユーザー単体作成",
+      summary = "ユーザーを1人作成します",
+      requestBody =
+          @RequestBody(
+              required = true,
+              content = @Content(schema = @Schema(implementation = UserCreateRequest.class))),
+      responses = {
+        @ApiResponse(
+            responseCode = "200",
+            content = @Content(schema = @Schema(implementation = User.class))),
+        @ApiResponse(
+            responseCode = "400",
+            content = @Content(schema = @Schema(implementation = ErrorResponseBody.class))),
+        @ApiResponse(
+            responseCode = "404",
+            content = @Content(schema = @Schema(implementation = ErrorResponseBody.class))),
+        @ApiResponse(
+            responseCode = "500",
+            content = @Content(schema = @Schema(implementation = ErrorResponseBody.class)))
+      })
   public Mono<ServerResponse> create(ServerRequest request) {
     var dto = request.bodyToMono(UserCreateRequest.class);
     var user = dto.flatMap(usecase::create);
 
-    return user.flatMap(u -> ServerResponse.ok()
-      .contentType(MediaType.APPLICATION_JSON)
-      .bodyValue(u));
+    return user.flatMap(
+        u -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).bodyValue(u));
   }
-
 }

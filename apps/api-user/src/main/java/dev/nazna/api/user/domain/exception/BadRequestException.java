@@ -17,5 +17,4 @@ public class BadRequestException extends ResponseStatusException {
   public String getMessage() {
     return message;
   }
-
 }

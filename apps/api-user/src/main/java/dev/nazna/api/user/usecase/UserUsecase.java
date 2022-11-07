@@ -22,17 +22,18 @@ public class UserUsecase {
   public Mono<User> find(final UserFindRequest request) {
     var id = Long.valueOf(request.id());
 
-    return repository.findById(id)
-      .map(user -> new User(user.id(), user.name()))
-      .switchIfEmpty(Mono.error(new NotFoundException("User not found.")));
+    return repository
+        .findById(id)
+        .map(user -> new User(user.id(), user.name()))
+        .switchIfEmpty(Mono.error(new NotFoundException("User not found.")));
   }
 
   public Mono<User> create(final UserCreateRequest request) {
     var input = new Users(null, request.name());
 
-    return repository.save(input)
-      .map(user -> new User(user.id(), user.name()))
-      .switchIfEmpty(Mono.error(new InternalServerErrorException("User not created.")));
+    return repository
+        .save(input)
+        .map(user -> new User(user.id(), user.name()))
+        .switchIfEmpty(Mono.error(new InternalServerErrorException("User not created.")));
   }
-
 }

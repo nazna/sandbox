@@ -6,8 +6,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 public class NotFoundException extends ResponseStatusException {
 
-  @NonNull
-  private final String message;
+  @NonNull private final String message;
 
   public NotFoundException(@NonNull String message) {
     super(HttpStatus.NOT_FOUND, message);
@@ -18,5 +17,4 @@ public class NotFoundException extends ResponseStatusException {
   public String getMessage() {
     return this.message;
   }
-
 }

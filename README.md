@@ -40,3 +40,7 @@ OpenAPIでAPIのI/Fを確認できます: [ReDoc](http://localhost:8080/redoc.ht
 ## Warning
 
 Dockerコンテナにパスワードがハードコーディングされているのは、本アプリケーションが実験用でローカルマシン環境でしか動作しない想定のためです
+
+## Reference
+
+- [Gradle/Kotlinで開発する私的ベストプラクティス2022](https://blog.kengo-toda.jp/entry/2022/02/06/122835)
