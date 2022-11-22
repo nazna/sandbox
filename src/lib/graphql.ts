@@ -1,4 +1,4 @@
-import { GraphQLID } from 'graphql';
+import { base32decode, base32encode } from './base32.js';
 
 interface ResolvedGlobalId {
   type: string | undefined;
@@ -8,11 +8,11 @@ interface ResolvedGlobalId {
 const GLOBAL_ID_SEPARATER = ':::';
 
 export const toGlobalId = (type: string, id: string): string => {
-  return `${type}${GLOBAL_ID_SEPARATER}${GraphQLID.serialize(id)}`;
+  return base32encode(`${type}${GLOBAL_ID_SEPARATER}${id}`);
 };
 
 export const fromGlobalId = (globalId: string): ResolvedGlobalId => {
-  const parsed = globalId.split(':::');
+  const parsed = base32decode(globalId).split(':::');
   return {
     type: parsed[0],
     id: parsed[1],
