@@ -26,12 +26,14 @@ dependencies {
     implementation(platform("org.springframework.experimental:spring-modulith-bom:0.1.0"))
 
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
 
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.experimental:spring-modulith-starter-test")
 
+    implementation("org.postgresql:postgresql:42.5.1")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-api:2.0.2")
     implementation("org.springdoc:springdoc-openapi-starter-common:2.0.2")
@@ -39,6 +41,7 @@ dependencies {
 
 spotless {
     kotlin {
+        targetExclude("**/Models.kt", "**/Queries.kt", "**/QueriesImpl.kt")
         ktlint()
     }
 }

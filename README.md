@@ -11,6 +11,10 @@
 
 ### エディターを設定する
 
+1. Editor > Code Style > Kotlin に移動し、Set from... を押下して Kotlin code style を選択する
+2. Tools > Actions on Save に移動し、Reformat code/Optimize imports/Rearrange code を選択する
+3. Build, Execution, Deployment > Compiler > Annotation Processors に移動し、Enable annotation processing を選択する
+
 ### DB等の環境を構築する
 
 ```shell

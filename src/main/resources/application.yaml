@@ -7,10 +7,11 @@ spring:
     banner-mode: off
   messages:
     encoding: UTF-8
-  r2dbc:
-    url: r2dbc:postgresql://localhost:5432/postgres
+  datasource:
     username: postgres
     password: p@ssw0rd
+    jdbc-url: jdbc:postgresql://localhost:5432/postgres
+    driver-class-name: org.postgresql.Driver
 springdoc:
   api-docs:
     path: /docs

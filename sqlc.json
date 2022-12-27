@@ -1,0 +1,28 @@
+{
+  "version": "2",
+  "plugins": [
+    {
+      "name": "kt",
+      "wasm": {
+        "url": "https://downloads.sqlc.dev/plugin/sqlc-gen-kotlin_1.0.0.wasm",
+        "sha256": "7620dc5d462de41fdc90e2011232c842117b416c98fd5c163d27c5738431a45c"
+      }
+    }
+  ],
+  "sql": [
+    {
+      "schema": "./database/schema/000-user.sql",
+      "queries": "./database/query/user.sql",
+      "engine": "postgresql",
+      "codegen": [
+        {
+          "out": "./src/main/kotlin/dev/nazna/examplespringmodulith/user/repository",
+          "plugin": "kt",
+          "options": {
+            "package": "dev.nazna.examplespringmodulith.user.repository"
+          }
+        }
+      ]
+    }
+  ]
+}

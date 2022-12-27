@@ -1,6 +1,7 @@
 package dev.nazna.examplespringmodulith.user.controller
 
 import dev.nazna.examplespringmodulith.user.domain.User
+import dev.nazna.examplespringmodulith.user.usecase.UserFind
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.Schema
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/user")
 @Tag(name = "ユーザーAPI")
-class UserController {
+class UserController(private val userFind: UserFind) {
 
     companion object {
         private const val CURRENT_VERSION = 1
@@ -39,15 +40,17 @@ class UserController {
     )
     @GetMapping("/v$CURRENT_VERSION/{id}")
     fun find(@PathVariable id: String): ResponseEntity<User> {
-        return ResponseEntity.ok().body(User("1", "alma", null, null))
+        return ResponseEntity.ok().body(userFind.execute(id))
     }
 
     @Operation(operationId = "user-create", summary = "Create User", description = "ユーザーを作成します")
     @ApiResponses(
-        value = [ApiResponse(
-            responseCode = "200",
-            content = [Content(schema = Schema(implementation = User::class))]
-        )]
+        value = [
+            ApiResponse(
+                responseCode = "200",
+                content = [Content(schema = Schema(implementation = User::class))]
+            )
+        ]
     )
     @PostMapping("/v$CURRENT_VERSION/{id}")
     fun create(@PathVariable id: String, @RequestBody body: UserRequestCreate): ResponseEntity<User> {
@@ -57,10 +60,12 @@ class UserController {
 
     @Operation(operationId = "user-edit", summary = "Edit User", description = "ユーザーを編集します")
     @ApiResponses(
-        value = [ApiResponse(
-            responseCode = "200",
-            content = [Content(schema = Schema(implementation = User::class))]
-        )]
+        value = [
+            ApiResponse(
+                responseCode = "200",
+                content = [Content(schema = Schema(implementation = User::class))]
+            )
+        ]
     )
     @PutMapping("/v$CURRENT_VERSION/{id}")
     fun edit(@PathVariable id: String): ResponseEntity<User> {
@@ -69,10 +74,12 @@ class UserController {
 
     @Operation(operationId = "user-delete", summary = "Delete User", description = "ユーザーを削除します")
     @ApiResponses(
-        value = [ApiResponse(
-            responseCode = "200",
-            content = [Content(schema = Schema(implementation = User::class))]
-        )]
+        value = [
+            ApiResponse(
+                responseCode = "200",
+                content = [Content(schema = Schema(implementation = User::class))]
+            )
+        ]
     )
     @DeleteMapping("/v$CURRENT_VERSION/{id}")
     fun delete(@PathVariable id: String): ResponseEntity<User> {
