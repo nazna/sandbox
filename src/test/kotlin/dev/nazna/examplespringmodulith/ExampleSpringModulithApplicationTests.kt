@@ -6,7 +6,7 @@ import org.springframework.modulith.model.ApplicationModules
 
 class ExampleSpringModulithApplicationTests {
 
-    private val modules = ApplicationModules.of(ExampleSpringModulithApplication::class.java)
+    private val modules = ApplicationModules.of(Application::class.java)
 
     @Test
     fun verifyModularity() {
