@@ -1,0 +1,20 @@
+interface Node {
+  id: ID!
+}
+
+type Task implements Node {
+  id: ID!
+  taskId: ID!
+  body: String!
+  isCompleted: Boolean!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type User implements Node {
+  id: ID!
+  userId: ID!
+  username: String!
+  createdAt: String!
+  updatedAt: String!
+}
