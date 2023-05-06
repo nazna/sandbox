@@ -1,3 +1,3 @@
 # sandbox
 
-> experiment or practice or enjoy
+> For experiment or practice or enjoy
