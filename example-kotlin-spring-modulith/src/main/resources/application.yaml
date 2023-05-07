@@ -1,0 +1,24 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: example-spring-modulith
+  main:
+    banner-mode: off
+  messages:
+    encoding: UTF-8
+  datasource:
+    username: postgres
+    password: p@ssw0rd
+    jdbc-url: jdbc:postgresql://localhost:5432/postgres
+    driver-class-name: org.postgresql.Driver
+springdoc:
+  api-docs:
+    path: /docs
+    version: openapi_3_1
+  swagger-ui:
+    enabled: false
+    disable-swagger-default-url: true
+logging:
+  level:
+    dev.nazna.api.user: debug

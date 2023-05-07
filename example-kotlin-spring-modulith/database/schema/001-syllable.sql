@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS "syllable"
+(
+    id         INTEGER     NOT NULL GENERATED ALWAYS AS IDENTITY,
+    user_id    INTEGER     NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    PRIMARY KEY (id),
+    CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES "user" (id)
+);
