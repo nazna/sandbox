@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "golang.go",
+    "graphql.vscode-graphql",
+    "graphql.vscode-graphql-syntax",
+    "inferrinizzard.prettier-sql-vscode",
+  ]
+}

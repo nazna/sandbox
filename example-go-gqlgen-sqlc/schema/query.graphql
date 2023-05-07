@@ -1,0 +1,5 @@
+type Query {
+  node(id: ID!): Node
+  user(userId: ID!): User
+  task(taskId: ID!): Task
+}
