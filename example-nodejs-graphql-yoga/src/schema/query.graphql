@@ -1,0 +1,10 @@
+type Query {
+  """
+  Find a user by UserId
+
+  @throws ERR_NOT_FOUND
+  @throws ERR_NETWORK
+  @throws ERR_UNEXPECTED
+  """
+  user(userId: String!): User
+}
