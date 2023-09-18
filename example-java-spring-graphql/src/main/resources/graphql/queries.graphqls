@@ -1,0 +1,4 @@
+type Query {
+  place(placeId: String!): Place
+  menu(menuId: String!): Menu
+}

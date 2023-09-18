@@ -1,0 +1,12 @@
+type Place {
+  id: ID!
+  placeId: String!
+  name: String!
+}
+
+type Menu {
+  id: ID!
+  menuId: String!
+  name: String!
+  price: Int!
+}

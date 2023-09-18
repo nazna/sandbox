@@ -1,0 +1,59 @@
+services:
+  app:
+    container_name: app
+    image: mcr.microsoft.com/devcontainers/java:17-bookworm
+    command: sleep infinity
+    volumes:
+      - ..:/work:cached
+    ports:
+      - 8080:8080
+  meilisearch:
+    container_name: meilisearch
+    image: getmeili/meilisearch:v1.3.4
+    environment:
+      - MEILI_NO_ANALYTICS=true
+      - MEILI_ENV=development
+      - MEILI_MASTER_KEY=this-is-a-meilisearch-secret-key
+    ports:
+      - 8081:7700
+  minio:
+    container_name: minio
+    image: quay.io/minio/minio:latest
+    environment:
+      - MINIO_ROOT_USER=root
+      - MINIO_ROOT_PASSWORD=password
+    command: server /data --console-address ":9001"
+    ports:
+      - 8082:9000
+      - 8083:9001
+  meilisearch-seeder:
+    container_name: meilisearch-seeder
+    image: quay.io/curl/curl:latest
+    depends_on:
+      - meilisearch
+    volumes:
+      - ../config/meilisearch:/tmp/meilisearch
+    entrypoint: >
+      /bin/sh -c "
+      curl -X POST -sS 'http://meilisearch:7700/indexes' -H 'Content-Type: application/json' -H 'Authorization: Bearer this-is-a-meilisearch-secret-key' -d @/tmp/meilisearch/index-menus.json;
+      curl -X POST -sS 'http://meilisearch:7700/indexes' -H 'Content-Type: application/json' -H 'Authorization: Bearer this-is-a-meilisearch-secret-key' -d @/tmp/meilisearch/index-places.json;
+      curl -X POST -sS 'http://meilisearch:7700/indexes/menus/documents' -H 'Content-Type: application/json' -H 'Authorization: Bearer this-is-a-meilisearch-secret-key' -d @/tmp/meilisearch/seed-menus.json;
+      curl -X POST -H 'Content-Type: application/json' -H 'Authorization: Bearer this-is-a-meilisearch-secret-key' -sS 'http://meilisearch:7700/indexes/places/documents' -d @/tmp/meilisearch/seed-places.json;
+      exit 0;
+      "
+  minio-seeder:
+    container_name: minio-seeder
+    image: quay.io/minio/mc:latest
+    depends_on:
+      - minio
+    volumes:
+      - ../config/minio:/tmp/minio
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc config host add ejsg http://minio:9000 root password;
+      /usr/bin/mc rm --force --recursive ejsg/settings;
+      /usr/bin/mc mb ejsg/settings;
+      /usr/bin/mc policy set ejsg/settings;
+      /usr/bin/mc cp /tmp/minio/settings.json ejsg/settings;
+      exit 0;
+      "

@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: example-java-spring-graphql
+  main:
+    banner-mode: off
+  messages:
+    encoding: UTF-8
+  graphql:
+    graphiql:
+      enabled: true

@@ -1,0 +1,48 @@
+{
+  "name": "example-java-spring-graphql",
+  "dockerComposeFile": "compose.yaml",
+  "service": "app",
+  "workspaceFolder": "/work",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "17",
+      "jdkDistro": "tem",
+      "installGradle": "true",
+      "gradleVersion": "latest"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.codeActionsOnSave": {
+          "source.fixAll": true,
+          "source.organizeImports": true
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.rulers": [120],
+        "java.compile.nullAnalysis.mode": "interactive",
+        "java.compile.nullAnalysis.nonnull": ["org.springframework.lang.NonNull"],
+        "java.compile.nullAnalysis.nullable": ["org.springframework.lang.Nullable"],
+        "java.configuration.updateBuildConfiguration": "interactive",
+        "java.debug.settings.enableRunDebugCodeLens": false,
+        "java.inlayHints.parameterNames.enabled": "none",
+        "search.exclude": {
+          "**/gradle": true
+        },
+        "[java]": {
+          "editor.defaultFormatter": "redhat.java"
+        }
+      },
+      "extensions": [
+        "EditorConfig.EditorConfig",
+        "esbenp.prettier-vscode",
+        "redhat.java",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "vmware.vscode-boot-dev-pack",
+        "vscjava.vscode-gradle",
+        "vscjava.vscode-java-pack"
+      ]
+    }
+  }
+}
