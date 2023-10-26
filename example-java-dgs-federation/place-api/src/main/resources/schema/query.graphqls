@@ -1,0 +1,4 @@
+type Query {
+  place(placeId: Int!): Place
+  places: [Place!]
+}

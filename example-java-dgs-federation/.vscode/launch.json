@@ -1,0 +1,34 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-Application<place-api>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "dev.nazna.sandbox.placeapi.Application",
+      "projectName": "place-api",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-PlaceApiApplication<place-api>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "dev.nazna.sandbox.placeapi.PlaceApiApplication",
+      "projectName": "place-api",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-ReviewApiApplication<review-api>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "dev.nazna.sandbox.reviewapi.ReviewApiApplication",
+      "projectName": "review-api",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

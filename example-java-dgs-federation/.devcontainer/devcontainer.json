@@ -1,0 +1,45 @@
+{
+  "name": "example-java-dgs-federation",
+  "dockerComposeFile": "compose.yaml",
+  "postCreateCommand": "curl -sSL https://rover.apollo.dev/nix/latest | sh",
+  "service": "app",
+  "workspaceFolder": "/example-java-dgs-federation",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.codeActionsOnSave": {
+          "source.fixAll": true,
+          "source.organizeImports": true
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.rulers": [120],
+        "java.compile.nullAnalysis.mode": "automatic",
+        "java.compile.nullAnalysis.nonnull": ["org.springframework.lang.NonNull"],
+        "java.compile.nullAnalysis.nullable": ["org.springframework.lang.Nullable"],
+        "java.configuration.updateBuildConfiguration": "automatic",
+        "java.debug.settings.enableRunDebugCodeLens": false,
+        "java.inlayHints.parameterNames.enabled": "none",
+        "search.exclude": {
+          "**/gradle": true
+        },
+        "[java]": {
+          "editor.defaultFormatter": "redhat.java"
+        },
+        "[sql]": {
+          "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
+        }
+      },
+      "extensions": [
+        "EditorConfig.EditorConfig",
+        "esbenp.prettier-vscode",
+        "inferrinizzard.prettier-sql-vscode",
+        "redhat.java",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "vmware.vscode-boot-dev-pack",
+        "vscjava.vscode-gradle",
+        "vscjava.vscode-java-pack"
+      ]
+    }
+  }
+}

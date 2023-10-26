@@ -1,0 +1,44 @@
+services:
+  app:
+    container_name: app
+    image: mcr.microsoft.com/vscode/devcontainers/java:17
+    command: sleep infinity
+    volumes:
+      - ..:/example-java-dgs-federation:cached
+    ports:
+      - 8081:8081
+      - 8082:8082
+  router:
+    container_name: router
+    image: ghcr.io/apollographql/router:v1.33.0
+    restart: always
+    command: --dev --supergraph schema/supergraph.graphql
+    volumes:
+      - ../supergraph.graphql:/dist/schema/supergraph.graphql
+    ports:
+      - 8080:4000
+  postgres:
+    container_name: postgres
+    image: postgres:16
+    restart: always
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=ejdf
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --locale=C
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ../database:/docker-entrypoint-initdb.d
+  pgweb:
+    container_name: pgweb
+    image: sosedoff/pgweb:latest
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - 8888:8081
+    environment:
+      - PGWEB_DATABASE_URL=postgres://user:password@postgres:5432/ejdf?sslmode=disable
+
+volumes:
+  postgres-data:

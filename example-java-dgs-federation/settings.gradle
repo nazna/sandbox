@@ -1,0 +1,3 @@
+rootProject.name = 'example-java-dgs-federation'
+
+include('place-api', 'review-api')

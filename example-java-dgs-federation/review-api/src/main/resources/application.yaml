@@ -1,0 +1,22 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: ejdf-review-api
+  main:
+    banner-mode: off
+  messages:
+    encoding: UTF-8
+  output:
+    ansi:
+      enabled: ALWAYS
+  r2dbc:
+    url: r2dbc:postgresql://postgres:5432/ejdf
+    username: user
+    password: password
+
+dgs:
+  graphql:
+    graphiql:
+      title: ejdf-review-api

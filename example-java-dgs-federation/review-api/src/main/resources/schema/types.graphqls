@@ -1,0 +1,12 @@
+scalar DateTime @specifiedBy(url: "https://scalars.graphql.org/andimarek/date-time.html")
+
+type Place @key(fields: "placeId") @extends {
+  placeId: Int! @external
+  reviews: [Review!]
+}
+
+type Review @key(fields: "reviewId") {
+  reviewId: Int!
+  body: String!
+  createdAt: DateTime!
+}

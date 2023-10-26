@@ -1,0 +1,4 @@
+type Query {
+  review(reviewId: Int!): Review
+  reviews: [Review!]
+}

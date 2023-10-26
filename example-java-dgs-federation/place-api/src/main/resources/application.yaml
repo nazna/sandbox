@@ -1,0 +1,22 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: ejdf-place-api
+  main:
+    banner-mode: off
+  messages:
+    encoding: UTF-8
+  output:
+    ansi:
+      enabled: ALWAYS
+  r2dbc:
+    url: r2dbc:postgresql://postgres:5432/ejdf
+    username: user
+    password: password
+
+dgs:
+  graphql:
+    graphiql:
+      title: ejdf-place-api

@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Misc
+bin
+build
+target
+
+# Gradle
+.gradle
+!gradle-wrapper.jar
