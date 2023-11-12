@@ -1,0 +1,28 @@
+{
+  "name": "example-nodejs-vite-federation",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Experimental project of Vite Federation",
+  "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
+  "workspaces": [
+    "packages/core",
+    "packages/hello"
+  ],
+  "scripts": {
+    "dev": "concurrently 'npm:dev:*'",
+    "dev:core": "npm run dev --workspace packages/core",
+    "dev:hello": "npm run serve --workspace packages/hello",
+    "check": "biome check --apply ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.3.3",
+    "@originjs/vite-plugin-federation": "1.3.2",
+    "concurrently": "8.2.2",
+    "typescript": "5.2.2"
+  },
+  "engines": {
+    "node": "21.x",
+    "npm": "10.x"
+  }
+}

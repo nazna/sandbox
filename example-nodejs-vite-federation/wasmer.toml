@@ -1,0 +1,16 @@
+[package]
+name = 'example-nodejs-vite-federation'
+version = '0.0.1'
+description = 'Experimental project of Vite Federation'
+
+[[module]]
+name = 'example-nodejs-vite-federation'
+source = 'example-nodejs-vite-federation.wasm'
+abi = 'wasi'
+
+[module.interfaces]
+wasi = '0.1.0-unstable'
+
+[[command]]
+name = 'example-nodejs-vite-federation'
+module = 'example-nodejs-vite-federation'
