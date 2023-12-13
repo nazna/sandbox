@@ -1,0 +1,18 @@
+.container {
+  max-width: 512px;
+  margin: 64px auto;
+  display: flex;
+  gap: 32px;
+}
+
+.avatar {
+  width: 64px;
+}
+
+.avatar > img {
+  border-radius: 16px;
+}
+
+.username {
+  font-size: 3rem;
+}

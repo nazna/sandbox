@@ -1,0 +1,26 @@
+{
+  "name": "example-nodejs-mfe-ssr",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Experimental idea of Micro Frontend with Server Side Rendering",
+  "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
+  "scripts": {
+    "dev": "vite",
+    "check": "biome check --apply ."
+  },
+  "dependencies": {
+    "hono": "3.11.6"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.4.1",
+    "@hono/vite-dev-server": "0.3.0",
+    "@types/node": "20.10.4",
+    "typescript": "5.3.3",
+    "vite": "5.0.8"
+  },
+  "engines": {
+    "node": "21.x",
+    "npm": "10.x"
+  }
+}

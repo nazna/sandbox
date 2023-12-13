@@ -1,0 +1,14 @@
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  font-style: italic;
+  background-repeat: no-repeat;
+  background-size: cover;
+  shape-margin: 0.75rem;
+}
+
+.container {
+  max-width: 512px;
+  margin: 64px auto;
+}
