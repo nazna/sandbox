@@ -1,0 +1,54 @@
+{
+    "places": [
+        {
+            "placeId": "1",
+            "name": "VIRON"
+        },
+        {
+            "placeId": "2",
+            "name": "六厘舎 東京駅東京ラーメンストリート"
+        },
+        {
+            "placeId": "3",
+            "name": "A16 TOKYO"
+        }
+    ],
+    "reviews": [
+        {
+            "reviewId": "1",
+            "score": 4.5,
+            "text": "東京駅丸の内南口から徒歩3分ほどにあります",
+            "placeId": "1"
+        },
+        {
+            "reviewId": "2",
+            "score": 4,
+            "text": "バケットがおいしい！",
+            "placeId": "1"
+        },
+        {
+            "reviewId": "3",
+            "score": 5,
+            "text": "近くまでお出かけした際は絶対買いたいと思うパンです",
+            "placeId": "1"
+        },
+        {
+            "reviewId": "4",
+            "score": 5,
+            "text": "味もあっさりでたくさん食べられる",
+            "placeId": "2"
+        },
+        {
+            "reviewId": "5",
+            "score": 4,
+            "text": "おしゃれなイタリアンです",
+            "placeId": "3"
+        },
+        {
+            "reviewId": "6",
+            "score": 5,
+            "text": "とてもおしゃれな雰囲気で食事も美味しかったので大満足でした",
+            "placeId": "3"
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+type Query {
+  search(query: String!, limit: Int = 10, offset: Int = 0): PlaceConnection
+}
+
+type PlaceConnection {
+  count: Int!
+  nodes: [Place!]!
+}
+
+type Place {
+  placeId: String!
+  name: String!
+  reviews: [Review!]
+}
+
+type Review {
+  reviewId: String!
+  score: Float!
+  text: String!
+  place: Place
+}
