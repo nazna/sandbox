@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# example-axum
+target
+database/sandbox.sqlite3
+database/*-shm
+database/*-wal
