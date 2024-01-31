@@ -1,36 +1,20 @@
 {
-  "name": "example-nodejs-graphql-tips",
+  "name": "example-graphqljs",
   "private": true,
   "type": "module",
-  "version": "0.0.1",
-  "description": "Notes for GraphQL server tips",
+  "version": "1.0.0",
+  "description": "GraphQL サーバーサイド編",
   "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
   "scripts": {
-    "dev": "NODE_CONFIG_ENV=development tsx ./src/index.ts | pino-pretty",
-    "build": "tsc --outDir ./dist",
-    "start": "node ./dist/index.js",
-    "codegen": "graphql-codegen",
     "check": "biome check --apply ."
   },
   "dependencies": {
-    "@graphql-tools/graphql-file-loader": "8.0.0",
-    "@graphql-tools/load": "8.0.1",
     "@graphql-tools/schema": "10.0.2",
-    "@graphql-yoga/plugin-disable-introspection": "2.1.1",
     "dataloader": "2.2.2",
-    "graphql": "16.8.1",
-    "graphql-yoga": "5.1.1",
-    "pino": "8.17.2"
+    "graphql": "16.8.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.5.1",
-    "@graphql-codegen/cli": "5.0.0",
-    "@graphql-codegen/typescript": "4.0.1",
-    "@graphql-codegen/typescript-resolvers": "4.0.1",
-    "@types/node": "20.11.0",
-    "pino-pretty": "10.3.1",
-    "tsx": "4.7.0",
-    "typescript": "5.3.3"
+    "@biomejs/biome": "1.5.3"
   },
   "engines": {
     "node": "21.x",

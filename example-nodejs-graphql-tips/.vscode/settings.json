@@ -11,9 +11,6 @@
     "**/node_modules": true,
     "**/dist": true
   },
-  "typescript.preferences.importModuleSpecifier": "relative",
-  "typescript.tsdk": "./node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
   "[javascript][javascriptreact][typescript][typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
   }
