@@ -1,0 +1,7 @@
+version: 1
+packages:
+  - path: "./src/infrastructure/persistence"
+    name: "persistence"
+    engine: "postgresql"
+    schema: "./database/ddl/"
+    queries: "./database/queries/"
