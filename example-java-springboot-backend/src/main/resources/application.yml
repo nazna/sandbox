@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/esb
+    username: root
+  lifecycle:
+    timeout-per-shutdown-phase: 10s
+
+doma:
+  dialect: mysql
+
+logging:
+  level:
+    org.seasar.doma.jdbc:
+      UtilLoggingJdbcLogger: warn
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger
