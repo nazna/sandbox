@@ -1,0 +1,47 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: p@ssw0rd
+      POSTGRES_INITDB_ARGS: --encoding=UTF-8 --locale=C
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+      - ./database:/tmp/database
+      - ./database/setup.sh:/docker-entrypoint-initdb.d/setup.sh
+  meilisearch:
+    image: getmeili/meilisearch:latest
+    container_name: meilisearch
+    ports:
+      - 7700:7700
+    volumes:
+      - meilisearch:/data.ms
+  dragonfly:
+    image: docker.dragonflydb.io/dragonflydb/dragonfly
+    container_name: dragonfly
+    ulimits:
+      memlock: -1
+    ports:
+      - 6379:6379
+    volumes:
+      - dragonfly:/data
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: p@ssw0rd
+    command: "server /data.minio --console-address :9001"
+    ports:
+      - 9000:9000
+      - 9001:9001
+    volumes:
+      - minio:/data.minio
+
+volumes:
+  postgres:
+  meilisearch:
+  dragonfly:
+  minio:

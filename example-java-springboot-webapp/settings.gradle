@@ -1,0 +1,3 @@
+rootProject.name = 'example-java-spring-boot-webapp'
+
+include("apps:api-user")
