@@ -1,0 +1,6 @@
+# Java
+.gradle
+!gradle/wrapper/gradle-wrapper.jar
+
+# build
+build

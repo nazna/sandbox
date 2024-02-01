@@ -1,0 +1,26 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Comment {
+  body: String!
+  id: ID!
+  user: User
+}
+
+interface Node {
+  id: ID!
+}
+
+type Query {
+  comment(id: String!): Comment!
+  node(id: String!): Node!
+  nodes: [Node!]!
+  user(id: String!): User!
+}
+
+type User implements Node {
+  comments: [Comment!]
+  id: ID!
+  name: String!
+}
