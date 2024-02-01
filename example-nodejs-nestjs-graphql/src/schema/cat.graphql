@@ -1,0 +1,22 @@
+type Query {
+  cat(catId: ID!): Cat
+  cats(limit: Int = 10, offset: Int = 0, sort: CatSort = CREATED_DESC): CatConnection!
+}
+
+type Cat implements Node {
+  id: ID!
+  name: String!
+  ownerId: String!
+  owner: Owner
+}
+
+type CatConnection implements Connection {
+  nodes: [Cat]
+  totalCount: Int!
+}
+
+enum CatSort {
+  CREATED_ASC
+  CREATED_DESC
+  STARGAZERS_DESC
+}

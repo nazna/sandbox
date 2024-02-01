@@ -1,0 +1,20 @@
+type Query {
+  owner(ownerId: ID!): Owner
+  owners(limit: Int = 10, offset: Int = 0, sort: OwnerSort = CREATED_DESC): OwnerConnection!
+}
+
+type Owner implements Node {
+  id: ID!
+  name: String!
+}
+
+type OwnerConnection implements Connection {
+  nodes: [Owner]
+  totalCount: Int!
+}
+
+enum OwnerSort {
+  CREATED_ASC
+  CREATED_DESC
+  STARGAZERS_DESC
+}
