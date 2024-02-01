@@ -1,0 +1,9 @@
+type Query {
+  movies(fail: Boolean!): [Movie!]!
+}
+
+type Movie {
+  id: ID!
+  title: String!
+  author(fail: Boolean!): Author!
+}

@@ -1,0 +1,8 @@
+type Query {
+  authors(fail: Boolean!): [Author!]
+}
+
+type Author {
+  id: ID!
+  name: String!
+}

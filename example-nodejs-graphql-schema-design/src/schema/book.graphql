@@ -1,0 +1,9 @@
+type Query {
+  books(fail: Boolean!): [Book!]
+}
+
+type Book {
+  id: ID!
+  title: String!
+  author(fail: Boolean!): Author
+}
