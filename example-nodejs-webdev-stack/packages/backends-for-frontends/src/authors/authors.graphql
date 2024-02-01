@@ -1,0 +1,10 @@
+type Query {
+  authors(limit: Int = 4, offset: Int = 0): [Author!]!
+  author(authorId: ID!): Author!
+}
+
+type Author {
+  authorId: ID
+  name: String
+  avatar: String
+}

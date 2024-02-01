@@ -1,0 +1,24 @@
+{
+  "frontend": {
+    "host": "localhost",
+    "port": 3000,
+    "api": "http://localhost:4000/graphql"
+  },
+  "backends-for-frontends": {
+    "host": "localhost",
+    "port": 4000,
+    "api": {
+      "books": {
+        "baseURL": "http://localhost:5000/v1/books"
+      },
+      "authors": {
+        "baseURL": "http://localhost:5000/v1/authors"
+      }
+    }
+  },
+  "backend": {
+    "host": "localhost",
+    "port": 5000,
+    "version": "v1"
+  }
+}

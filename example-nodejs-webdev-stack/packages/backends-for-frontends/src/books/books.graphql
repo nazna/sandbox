@@ -1,0 +1,28 @@
+type Query {
+  books(limit: Int = 4, offset: Int = 0, orderBy: BookOrder = { field: BOOK_ID, direction: ASC }): [Book!]!
+  book(bookId: ID!): Book!
+}
+
+type Book {
+  bookId: ID
+  authorId: ID
+  title: String
+  image: String
+  publishedAt: String
+}
+
+input BookOrder {
+  field: BookOrderField!
+  direction: OrderDirection!
+}
+
+enum BookOrderField {
+  BOOK_ID
+  TITLE
+  PUBLISHED_AT
+}
+
+enum OrderDirection {
+  ASC
+  DESC
+}
