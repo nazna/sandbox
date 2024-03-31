@@ -1,0 +1,39 @@
+{
+  "name": "example-nodejs-otel-restapi",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Experimental project to learn OpenTelemetry with Fastify",
+  "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
+  "scripts": {
+    "dev": "tsc && node --import ./dist/instrumentation.js ./dist/main.js | pino-pretty",
+    "build": "tsc",
+    "start": "node --import ./dist/instrumentation.js ./dist/main.js",
+    "check": "biome check --apply ."
+  },
+  "dependencies": {
+    "@fastify/helmet": "11.1.1",
+    "@fastify/sensible": "5.5.0",
+    "@opentelemetry/api-logs": "0.49.1",
+    "@opentelemetry/exporter-logs-otlp-http": "0.49.1",
+    "@opentelemetry/exporter-metrics-otlp-http": "0.49.1",
+    "@opentelemetry/exporter-trace-otlp-http": "0.49.1",
+    "@opentelemetry/instrumentation-fastify": "0.34.0",
+    "@opentelemetry/instrumentation-http": "0.49.1",
+    "@opentelemetry/instrumentation-pino": "0.36.0",
+    "@opentelemetry/sdk-node": "0.49.1",
+    "@opentelemetry/semantic-conventions": "1.22.0",
+    "fastify": "4.26.2",
+    "pino": "8.19.0",
+    "pino-abstract-transport": "1.1.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.6.3",
+    "@types/node": "20.12.2",
+    "typescript": "5.4.3"
+  },
+  "engines": {
+    "node": "21.x",
+    "npm": "10.x"
+  }
+}

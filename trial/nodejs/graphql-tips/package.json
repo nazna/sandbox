@@ -1,0 +1,23 @@
+{
+  "name": "example-graphqljs",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "GraphQL サーバーサイド編",
+  "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
+  "scripts": {
+    "check": "biome check --apply ."
+  },
+  "dependencies": {
+    "@graphql-tools/schema": "10.0.2",
+    "dataloader": "2.2.2",
+    "graphql": "16.8.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.5.3"
+  },
+  "engines": {
+    "node": "21.x",
+    "npm": "10.x"
+  }
+}

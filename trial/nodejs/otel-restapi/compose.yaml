@@ -1,0 +1,20 @@
+services:
+  openobserve:
+    container_name: openobserve
+    image: public.ecr.aws/zinclabs/openobserve:latest
+    ports:
+      - 5080:5080
+    environment:
+      ZO_ROOT_USER_EMAIL: email@example.com
+      ZO_ROOT_USER_PASSWORD: password
+      ZO_DATA_DIR: /data
+    volumes:
+      - ./data:/data
+  otelcollector:
+    container_name: otelcollector
+    image: otel/opentelemetry-collector:latest
+    ports:
+      - 4318:4318
+    restart: always
+    volumes:
+      - ./otelcollector.yaml:/etc/otelcol/config.yaml
