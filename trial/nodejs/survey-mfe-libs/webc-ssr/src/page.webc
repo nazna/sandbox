@@ -1,0 +1,4 @@
+<main>
+  <hello-world :@name="'nazna'"></hello-world>
+  <click-counter></click-counter>
+</main>

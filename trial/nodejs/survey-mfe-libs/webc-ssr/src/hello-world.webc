@@ -1,0 +1,10 @@
+<style webc:scoped="hello-world">
+  h1 {
+    font-size: 3rem;
+  }
+</style>
+
+<div>
+  <h1>Hello, world~ <span @text="name"></span></h1>
+  <p>This is WebC SSR.</p>
+</div>

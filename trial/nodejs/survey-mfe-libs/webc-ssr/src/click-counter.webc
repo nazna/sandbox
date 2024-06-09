@@ -1,0 +1,23 @@
+<style webc:scoped="click-counter">
+  p {
+    font-weight: bold;
+  }
+</style>
+
+<div>
+  <p>Clicked: <span id="value">0</span></p>
+  <button type="button" @click="${this.increment}">+1</button>
+</div>
+
+<script>
+  window.customElements.define('click-counter', class extends HTMLElement {
+    connectedCallback() {
+      let value = parseInt(this.querySelector("#value").textContent);
+
+      this.querySelector("button").addEventListener("click", () => {
+        value += 1;
+        this.querySelector("#value").textContent = value;
+      })
+    }
+  })
+</script>

@@ -1,0 +1,27 @@
+{
+  "name": "webc-ssr",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Experimental WebC SSR",
+  "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
+  "engines": {
+    "node": "22.x",
+    "npm": "10.x"
+  },
+  "scripts": {
+    "dev": "tsx ./src/main.ts",
+    "check": "biome check --apply ."
+  },
+  "dependencies": {
+    "@11ty/webc": "0.11.4",
+    "@hono/node-server": "1.11.1",
+    "hono": "4.3.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.7.2",
+    "@types/node": "20.12.8",
+    "tsx": "4.9.1",
+    "typescript": "5.4.5"
+  }
+}

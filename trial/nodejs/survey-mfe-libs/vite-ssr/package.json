@@ -1,0 +1,36 @@
+{
+  "name": "vite-ssr",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Experimental Vite SSR",
+  "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
+  "engines": {
+    "node": "22.x",
+    "npm": "10.x"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "vite build --outDir ./dist/client --mode client",
+    "build:server": "vite build --outDir ./dist/server --ssr ./src/entry-server.tsx",
+    "check": "tsc --noEmit && biome check --apply ."
+  },
+  "dependencies": {
+    "@hono/node-server": "1.11.1",
+    "@hono/react-renderer": "0.2.0",
+    "hono": "4.3.11",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.7.3",
+    "@types/node": "20.12.12",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "@vitejs/plugin-react": "4.3.0",
+    "@vitejs/plugin-react-swc": "3.7.0",
+    "typescript": "5.4.5",
+    "vite": "5.2.11"
+  }
+}
