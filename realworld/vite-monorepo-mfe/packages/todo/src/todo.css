@@ -1,0 +1,89 @@
+.todo {
+  > .creator {
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    margin-bottom: 16px;
+
+    > .body {
+      padding: 16px;
+      border-bottom: 1px solid #c8c8c8;
+
+      > input {
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 8px;
+      }
+    }
+
+    > .footer {
+      padding: 16px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+
+      > button {
+        cursor: pointer;
+        border: none;
+        outline: none;
+        font-weight: bold;
+        border-radius: 4px;
+        padding: 0 8px;
+        color: #fff;
+        line-height: 32px;
+      }
+
+      > .cancel {
+        background-color: #c8c8c8;
+      }
+
+      > .create {
+        background-color: #4b86a0;
+      }
+    }
+  }
+
+  .list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    > li:not(:first-child) {
+      margin-top: 16px;
+    }
+
+    input[type="checkbox"] {
+      display: none;
+    }
+
+    input[type="checkbox"] + label {
+      display: block;
+      position: relative;
+      padding-left: 32px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    input[type="checkbox"] + label:before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #4b86a0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: all 0.12s, border-color 0.08s;
+    }
+
+    input[type="checkbox"]:checked + label:before {
+      width: 10px;
+      top: -5px;
+      left: 5px;
+      border-radius: 0;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      transform: rotate(45deg);
+    }
+  }
+}
