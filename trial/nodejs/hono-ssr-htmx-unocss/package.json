@@ -1,0 +1,33 @@
+{
+  "name": "example-hono-ssr-htmx-unocss",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Vite + Hono + SSR hono/jsx + htmx + UnoCSS",
+  "license": "UNLICENSED",
+  "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
+  "engines": {
+    "node": "22.x",
+    "npm": "10.x"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run htmx && npm run unocss",
+    "htmx": "cp node_modules/htmx.org/dist/htmx.min.js src/htmx.min.js",
+    "unocss": "unocss",
+    "check": "tsc --noEmit && biome check --write ."
+  },
+  "dependencies": {
+    "hono": "4.5.8",
+    "htmx.org": "1.9.12",
+    "unocss": "0.62.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.8.3",
+    "@hono/vite-dev-server": "0.14.0",
+    "@types/node": "22.5.0",
+    "typescript": "5.5.4",
+    "vite": "5.4.2",
+    "vite-plugin-watch-and-run": "1.7.0"
+  }
+}
