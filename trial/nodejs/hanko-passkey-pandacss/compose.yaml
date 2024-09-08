@@ -1,0 +1,60 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:16
+    ports:
+      - 5432:5432
+    volumes:
+      - type: volume
+        source: postgres-data
+        target: /var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=hanko
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --locale=C
+    healthcheck:
+      test: pg_isready -U user -h 127.0.0.1
+  pgweb:
+    container_name: pgweb
+    image: sosedoff/pgweb:latest
+    ports:
+      - 8083:8081
+    environment:
+      - PGWEB_DATABASE_URL=postgres://user:password@postgres:5432/hanko?sslmode=disable
+    depends_on:
+      postgres:
+        condition: service_healthy
+  mailpit:
+    container_name: mailpit
+    image: axllent/mailpit:latest
+    ports:
+      - 8084:8025
+  hanko-migrate:
+    container_name: hanko-migrate
+    image: ghcr.io/teamhanko/hanko:latest
+    volumes:
+      - type: bind
+        source: ./config.yaml
+        target: /config/config.yaml
+    command: migrate up
+    depends_on:
+      postgres:
+        condition: service_healthy
+  hanko:
+    container_name: hanko
+    image: ghcr.io/teamhanko/hanko:latest
+    ports:
+      - 8081:8000
+      - 8082:8001
+    volumes:
+      - type: bind
+        source: ./config.yaml
+        target: /config/config.yaml
+    command: serve all
+    depends_on:
+      hanko-migrate:
+        condition: service_completed_successfully
+
+volumes:
+  postgres-data:

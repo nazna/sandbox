@@ -1,0 +1,22 @@
+database:
+  user: user
+  password: password
+  host: postgres
+  port: 5432
+  database: hanko
+  dialect: postgres
+email_delivery:
+  smtp:
+    host: mailpit
+    port: 1025
+  from_address: noreply@example.com
+secrets:
+  keys:
+    - abcedfghijklmnopqrstuvwxyz
+server:
+  public:
+    cors:
+      allow_origins:
+        - http://localhost:8080
+service:
+  name: example-hanko-passkey-pandacss

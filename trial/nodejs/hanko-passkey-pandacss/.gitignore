@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Node.js
+node_modules
+
+# Build
+dist
+
+# Panda CSS
+styled-system
+styled-system-studio
