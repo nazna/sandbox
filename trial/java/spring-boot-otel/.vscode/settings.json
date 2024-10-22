@@ -1,0 +1,26 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.compile.nullAnalysis.nonnullbydefault": [
+    "org.springframework.lang.NonNullApi",
+    "org.springframework.lang.NonNullFields"
+  ],
+  "java.configuration.runtimes": [
+    { "name": "JavaSE-22", "path": "/home/naoya/.local/share/mise/installs/java/22.0.2", "default": true }
+  ],
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
+  },
+  "[typescript][typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "typescript.preferences.importModuleSpecifier": "relative"
+  }
+}

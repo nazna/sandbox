@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Java
+.gradle
+bin
+build
+!gradle/wrapper/gradle-wrapper.jar
+
+# Node.js
+node_modules
