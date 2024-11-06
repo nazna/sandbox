@@ -1,0 +1,36 @@
+{
+  "name": "amplifier",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "license": "UNLICENSED",
+  "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
+  "engines": {
+    "node": "23.x",
+    "npm": "10.x"
+  },
+  "scripts": {
+    "start": "node --experimental-strip-types --import ./instrumentation.ts ./main.ts",
+    "check": "tsc --noEmit && biome check --write ."
+  },
+  "dependencies": {
+    "@hono/node-server": "1.13.3",
+    "@hono/zod-validator": "0.4.1",
+    "@opentelemetry/exporter-logs-otlp-http": "0.54.0",
+    "@opentelemetry/exporter-metrics-otlp-http": "0.54.0",
+    "@opentelemetry/exporter-trace-otlp-http": "0.54.0",
+    "@opentelemetry/instrumentation-http": "0.54.0",
+    "@opentelemetry/instrumentation-winston": "0.41.0",
+    "@opentelemetry/resources": "1.27.0",
+    "@opentelemetry/sdk-node": "0.54.0",
+    "@opentelemetry/semantic-conventions": "1.27.0",
+    "@opentelemetry/winston-transport": "0.7.0",
+    "hono": "4.6.8",
+    "winston": "3.15.0",
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "typescript": "5.6.3"
+  }
+}

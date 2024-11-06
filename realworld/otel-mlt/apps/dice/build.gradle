@@ -1,0 +1,32 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.4'
+}
+
+group = 'com.example'
+version = '0.0.1'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+  implementation(platform(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES))
+  implementation(platform('io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:2.8.0'))
+
+  implementation('io.micrometer:micrometer-registry-otlp')
+  implementation('io.micrometer:micrometer-tracing-bridge-otel')
+  implementation('io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter')
+  implementation('net.ttddyy.observation:datasource-micrometer-spring-boot:1.0.5')
+	implementation('org.postgresql:postgresql')
+  implementation('org.springframework.boot:spring-boot-starter-aop')
+	implementation('org.springframework.boot:spring-boot-starter-web')
+  implementation('org.springframework.boot:spring-boot-starter-jdbc')
+  implementation('org.springframework.boot:spring-boot-starter-actuator')
+}

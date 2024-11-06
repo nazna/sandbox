@@ -1,0 +1,111 @@
+services:
+  k6:
+    container_name: k6
+    image: grafana/k6:latest
+    volumes:
+      - type: bind
+        source: ./config/k6.js
+        target: /etc/k6/k6.js
+        read_only: true
+  dice:
+    container_name: dice
+    image: eclipse-temurin:21
+    ports:
+      - 8080:8080
+    command: ./gradlew bootRun
+    init: true
+    working_dir: /app
+    volumes:
+      - type: bind
+        source: ./apps/dice
+        target: /app
+  amplifier:
+    container_name: amplifier
+    image: node:23-slim
+    command: npm --run start
+    init: true
+    working_dir: /app
+    environment:
+      - NODE_ENV=production
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://opentelemetry-collector:4318
+    volumes:
+      - type: bind
+        source: ./apps/amplifier
+        target: /app
+        read_only: true
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=sandbox
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --locale=C.UTF-8
+    volumes:
+      - type: bind
+        source: ./config/schema.sql
+        target: /docker-entrypoint-initdb.d/schema.sql
+        read_only: true
+    healthcheck:
+      test: pg_isready -h localhost -U user -d sandbox
+  opentelemetry-collector:
+    container_name: opentelemetry-collector
+    image: otel/opentelemetry-collector:latest
+    ports:
+      - 4318:4318
+    volumes:
+      - type: bind
+        source: ./config/otel.yaml
+        target: /etc/otelcol/config.yaml
+        read_only: true
+    depends_on:
+      - mimir
+      - loki
+      - tempo
+  mimir:
+    container_name: mimir
+    image: grafana/mimir:latest
+    command: -config.file=/etc/mimir/config.yaml
+    volumes:
+      - type: bind
+        source: ./config/mimir.yaml
+        target: /etc/mimir/config.yaml
+        read_only: true
+  loki:
+    container_name: loki
+    image: grafana/loki:latest
+    command: -config.file=/etc/loki/config.yaml
+    volumes:
+      - type: bind
+        source: ./config/loki.yaml
+        target: /etc/loki/config.yaml
+        read_only: true
+  tempo:
+    container_name: tempo
+    image: grafana/tempo:latest
+    command: -config.file=/etc/tempo/config.yaml
+    volumes:
+      - type: bind
+        source: ./config/tempo.yaml
+        target: /etc/tempo/config.yaml
+        read_only: true
+  grafana:
+    container_name: grafana
+    image: grafana/grafana-enterprise:latest
+    ports:
+      - 8081:3000
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
+      - GF_LOG_LEVEL=warn
+      - GF_INSTALL_PLUGINS=grafana-lokiexplore-app,grafana-exploretraces-app
+    volumes:
+      - type: bind
+        source: ./config/grafana-datasources.yaml
+        target: /etc/grafana/provisioning/datasources/datasources.yaml
+        read_only: true
+    depends_on:
+      - mimir
+      - loki
+      - tempo
