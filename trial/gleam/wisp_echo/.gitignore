@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# Elixir
+*.beam
+*.ez
+erl_crash.dump
+
+# Gleam
+build
