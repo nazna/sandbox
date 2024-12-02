@@ -1,0 +1,28 @@
+{
+  "name": "example-hono-jsx",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Vite + hono/jsx like Single Page Application",
+  "license": "UNLICENSED",
+  "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
+  "engines": {
+    "node": "23.x",
+    "npm": "10.x"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --mode client && vite build",
+    "check": "tsc && biome check --write ."
+  },
+  "dependencies": {
+    "hono": "4.6.12"
+  },
+  "devDependencies": {
+    "@hono/vite-build": "1.1.0",
+    "@hono/vite-dev-server": "0.17.0",
+    "@types/node": "22.10.1",
+    "typescript": "5.7.2",
+    "vite": "6.0.1"
+  }
+}
