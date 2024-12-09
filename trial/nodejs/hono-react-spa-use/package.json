@@ -1,0 +1,31 @@
+{
+  "name": "aaa",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "description": "bbb",
+  "license": "UNLICENSED",
+  "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
+  "engines": {
+    "node": "23.x",
+    "npm": "10.x"
+  },
+  "scripts": {
+    "dev": "vite",
+    "check": "tsc && biome check --write ."
+  },
+  "dependencies": {
+    "hono": "4.6.13",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@hono/vite-dev-server": "0.17.0",
+    "@types/node": "22.10.1",
+    "@types/react": "19.0.1",
+    "@types/react-dom": "19.0.1",
+    "typescript": "5.7.2",
+    "vite": "6.0.3"
+  }
+}
