@@ -1,0 +1,24 @@
+{
+  "name": "example-ollama",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Example of Node.js Ollama",
+  "license": "UNLICENSED",
+  "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
+  "engines": {
+    "node": "23.x",
+    "npm": "11.x"
+  },
+  "scripts": {
+    "check": "tsc && biome check --write ."
+  },
+  "dependencies": {
+    "ollama": "0.5.12"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/node": "22.10.10",
+    "typescript": "5.7.3"
+  }
+}
