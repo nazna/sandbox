@@ -1,0 +1,26 @@
+{
+  "name": "example-duckdb-geospatial",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "description": "DuckDB + GeoSpatial",
+  "license": "UNLICENSED",
+  "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
+  "engines": {
+    "node": "23.x",
+    "npm": "11.x"
+  },
+  "scripts": {
+    "dev": "vite",
+    "check": "biome check --write ."
+  },
+  "dependencies": {
+    "ol": "10.5.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/node": "22.14.0",
+    "typescript": "5.8.3",
+    "vite": "6.2.5"
+  }
+}

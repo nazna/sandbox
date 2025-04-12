@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Node.js
+node_modules
+
+# input/output
+P04-20_33.geojson
+result.geojson

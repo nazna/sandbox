@@ -16,6 +16,9 @@
     "**/dist": true
   },
   "[rust]": {
-    "editor.defaultFormatter": "matklad.rust-analyzer"
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "rust-analyzer.diagnostics.disabled": [
+      "macro-error"
+    ]
   }
 }
