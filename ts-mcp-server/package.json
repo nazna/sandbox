@@ -1,0 +1,24 @@
+{
+  "name": "ts-mcp-server",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "description": "MCP Server with TypeScript SDK",
+  "license": "UNLICENSED",
+  "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
+  "engines": {
+    "node": "23.x",
+    "npm": "11.x"
+  },
+  "scripts": {
+    "check": "biome check --write ."
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.11.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/node": "22.15.3",
+    "typescript": "5.8.3"
+  }
+}

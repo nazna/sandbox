@@ -1,0 +1,20 @@
+[prompt]
+about_user = "I am a curious human programmer."
+response_preference = "Basic concepts don't need to be explained."
+
+[prompt.project]
+activitywatch = "ActivityWatch is a free and open-source automated time-tracker that helps you track how you spend your time on your devices."
+gptme = "gptme is a CLI to interact with large language models in a Chat-style interface, enabling the assistant to execute commands and code on the local machine, letting them assist in all kinds of development and terminal-based work."
+
+[env]
+GEMINI_API_KEY = "###"
+
+[mcp]
+enabled = true
+auto_start = true
+
+[[mcp.servers]]
+name = "example-mcp-server"
+enabled = true
+command = "node"
+args = "/home/naoya/work/ts-mcp-server/main.ts"

@@ -1,0 +1,10 @@
+{
+  "theme": "textual-dark",
+  "splash-screen": true,
+  "mcpServers": {
+    "example-mcp-server": {
+      "command": "node",
+      "args": ["main.ts"]
+    }
+  }
+}
