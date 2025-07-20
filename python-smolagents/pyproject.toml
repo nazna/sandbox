@@ -1,0 +1,21 @@
+[project]
+name = "python-smolagents"
+version = "0.1.0"
+description = "Demo LLM Application with Hugging Face smolagents"
+authors = [{ name = "nazna", email = "naznagg@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "httpx>=0.28.1",
+    "smolagents[openai,toolkit]>=1.20.0",
+]
+
+[dependency-groups]
+dev = ["ruff>=0.12.4", "ty>=0.0.1a15"]
+
+[tool.uv]
+python-downloads = "manual"
+
+[tool.ruff]
+fix = true
+line-length = 120
