@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Misc
+.env
+
+# Python
+__pycache__
+*.py[oc]
+.venv
+.ruff_cache
+
+# opensrc - source code for packages
+opensrc/
+
+# Output
+*.duckdb
+*.parquet
