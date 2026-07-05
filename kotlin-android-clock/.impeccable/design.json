@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-05T17:26:00Z",
+  "title": "Design System: Android Clock",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Console Green",
+        "canonical": "oklch(0.62 0.16 150.0)",
+        "tonalRamp": [
+          "oklch(0.15 0.16 150.0)",
+          "oklch(0.25 0.16 150.0)",
+          "oklch(0.35 0.16 150.0)",
+          "oklch(0.45 0.16 150.0)",
+          "oklch(0.55 0.16 150.0)",
+          "oklch(0.65 0.16 150.0)",
+          "oklch(0.75 0.16 150.0)",
+          "oklch(0.85 0.16 150.0)"
+        ]
+      },
+      "accent": {
+        "role": "accent",
+        "displayName": "Cyan Signal",
+        "canonical": "oklch(0.70 0.14 190.0)",
+        "tonalRamp": [
+          "oklch(0.15 0.14 190.0)",
+          "oklch(0.25 0.14 190.0)",
+          "oklch(0.35 0.14 190.0)",
+          "oklch(0.45 0.14 190.0)",
+          "oklch(0.55 0.14 190.0)",
+          "oklch(0.65 0.14 190.0)",
+          "oklch(0.75 0.14 190.0)",
+          "oklch(0.85 0.14 190.0)"
+        ]
+      },
+      "neutral-bg": {
+        "role": "neutral-bg",
+        "displayName": "Console Dark BG",
+        "canonical": "oklch(0.08 0.0 0.0)",
+        "tonalRamp": [
+          "oklch(0.08 0.0 0.0)",
+          "oklch(0.15 0.0 0.0)",
+          "oklch(0.25 0.0 0.0)",
+          "oklch(0.35 0.0 0.0)",
+          "oklch(0.50 0.0 0.0)",
+          "oklch(0.65 0.0 0.0)",
+          "oklch(0.80 0.0 0.0)",
+          "oklch(0.95 0.0 0.0)"
+        ]
+      },
+      "neutral-surface": {
+        "role": "neutral-surface",
+        "displayName": "Console Surface",
+        "canonical": "oklch(0.12 0.0 0.0)",
+        "tonalRamp": [
+          "oklch(0.12 0.0 0.0)",
+          "oklch(0.20 0.0 0.0)",
+          "oklch(0.30 0.0 0.0)",
+          "oklch(0.40 0.0 0.0)",
+          "oklch(0.55 0.0 0.0)",
+          "oklch(0.70 0.0 0.0)",
+          "oklch(0.85 0.0 0.0)",
+          "oklch(0.95 0.0 0.0)"
+        ]
+      },
+      "ink": {
+        "role": "ink",
+        "displayName": "Console Ink",
+        "canonical": "oklch(0.95 0.005 150.0)",
+        "tonalRamp": [
+          "oklch(0.30 0.005 150.0)",
+          "oklch(0.40 0.005 150.0)",
+          "oklch(0.50 0.005 150.0)",
+          "oklch(0.60 0.005 150.0)",
+          "oklch(0.70 0.005 150.0)",
+          "oklch(0.80 0.005 150.0)",
+          "oklch(0.90 0.005 150.0)",
+          "oklch(0.95 0.005 150.0)"
+        ]
+      },
+      "muted": {
+        "role": "muted",
+        "displayName": "Console Muted",
+        "canonical": "oklch(0.60 0.003 150.0)",
+        "tonalRamp": [
+          "oklch(0.20 0.003 150.0)",
+          "oklch(0.30 0.003 150.0)",
+          "oklch(0.40 0.003 150.0)",
+          "oklch(0.50 0.003 150.0)",
+          "oklch(0.60 0.003 150.0)",
+          "oklch(0.70 0.003 150.0)",
+          "oklch(0.80 0.003 150.0)",
+          "oklch(0.90 0.003 150.0)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Primary indicator numbers and clock display."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Standard reads, descriptive labels, and console logs."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "fade-in",
+        "value": "150ms ease-out",
+        "purpose": "Subtle status/time updates or state transitions."
+      }
+    ],
+    "breakpoints": []
+  },
+  "components": [],
+  "narrative": {
+    "northStar": "The High-Precision Console",
+    "overview": "This visual system is modeled after professional developer consoles, command-line interfaces, and technical monitoring tools. It is characterized by high information density, clear typographic hierarchy, and a strict structural layout.",
+    "keyCharacteristics": [
+      "High-contrast, dark-mode first design",
+      "Restrained color application with precise highlights",
+      "Strict alignment to a vertical/horizontal grid",
+      "Flat container geometry utilizing tonal layering instead of drop shadows"
+    ],
+    "rules": [
+      {
+        "name": "The 15% Highlight Rule",
+        "body": "Primary and Accent colors must occupy ≤15% of the total screen space. Their role is to focus attention on interactive points; over-saturation destroys the console aesthetic.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tonal Contrast Rule",
+        "body": "Background and surfaces must never be tinted with warm hues. They remain strictly achromatic to ensure color accuracy of primary/accent states.",
+        "section": "colors"
+      },
+      {
+        "name": "The Figure Monospace Rule",
+        "body": "Any dynamic numerical data, counters, or timestamps must be typeset in System Monospace to prevent layout shifting on updates.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do format all timestamps and counters in Monospace font.",
+      "Do use tonal surface nesting (Console Surface on Console Dark BG) for layout structure.",
+      "Do check that text on Console Green fills is high-contrast black or near-black.",
+      "Do maintain a strict 8dp-based grid for paddings and margins."
+    ],
+    "donts": [
+      "Don't use Material 3 purple/pink color schemes in any screens.",
+      "Don't use decorative drop shadows on static cards or buttons.",
+      "Don't use gradient text or acid-bright neon backgrounds.",
+      "Don't pair fonts that are similar but not identical (stick to system sans-serif and monospace)."
+    ]
+  }
+}
